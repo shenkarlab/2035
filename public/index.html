@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta content="utf-8" http-equiv="encoding">
+		
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="IL2036/charts/line.js" ></script>
+		<script src="IL2036/app.js" ></script>
+		<script src="IL2036/chartController.js" ></script>
+		<link rel="stylesheet" href="css/main.css" type="text/css" />
+	</head>
+	
+	<body ng-app="IL2036" ng-controller="mainAppController" >
+		
+		<div class="rap" >
+			
+			<div ng-include="'views/yearDisplay.html'" ng-repeat="year in years.good" >
+			</div>
+		
+		</div>
+		
+	</body>
+</html>

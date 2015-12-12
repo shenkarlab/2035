@@ -1,0 +1,18 @@
+<!--
+	
+	Display the data of the year object
+	
+-->
+<div class="year" >
+	
+	<h1>{{year.title}}</h1>
+	
+	<!-- display all rows -->
+	<div class="row" ng-repeat="row in year.rows" >
+	
+		<!-- display all boxes -->
+		<div ng-include="'views/box.html'" ng-repeat="box in row.boxes" class="box" ng-switch="box.type" style="width:{{box.weight/row.total_weight*100}}%;" ></div>
+	
+	</div>
+	
+</div>

@@ -1,0 +1,23 @@
+*{
+	
+	margin:0;
+	padding:0;
+	text-align:right;
+	text-direction: rtl;
+}
+
+.box{
+	vertical-align:top;
+	display:inline-block;
+}
+
+.rap{
+	
+	width:100%;
+}
+
+.box img{
+	
+	display:block;
+	width:100%;
+}

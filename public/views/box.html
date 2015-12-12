@@ -1,0 +1,20 @@
+<!-- 
+	
+	A period display is seperated to boxes by a grid.
+	This view represens a box.
+
+-->	
+<span ng-switch-when="paragraph" >
+		
+	<h2>{{box.title}}</h2>
+	<p>
+		{{box.body}}
+	</p>
+		
+</span>
+	
+<img ng-switch-when="image" ng-src="box.src" />
+		
+<div ng-switch-when="chart" ng-bind-html="chartDisplay" ng-controller="chartController" ng-init="init(box.type, box.src)" >
+	
+</div>
