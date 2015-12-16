@@ -8,10 +8,10 @@
 	<h1>{{year.title}}</h1>
 	
 	<!-- display all rows -->
-	<div class="row" ng-repeat="row in year.rows" >
+	<div  ng-repeat="row in year.rows" >
 	
 		<!-- display all boxes -->
-		<div ng-include="'views/box.html'" ng-repeat="box in row.boxes" class="box" ng-switch="box.type" style="width:{{box.weight/row.total_weight*100}}%;" ></div>
+		<div ng-include="'views/box.html'" ng-controller="boxController" ng-scroll-into="apear" ng-repeat="box in row.boxes track by $index" ng-switch="box.type" class="box b{{box.weight}} {{(display) ? 'anim-in' : ''}}" ></div>
 	
 	</div>
 	

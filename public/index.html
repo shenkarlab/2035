@@ -10,12 +10,21 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 		<script src="IL2036/charts/line.js" ></script>
 		<script src="IL2036/app.js" ></script>
-		<script src="IL2036/chartController.js" ></script>
+		<script src="IL2036/directives/ng-scroll-into.js" ></script>
+		<script src="IL2036/directives/sb-load.js" ></script>
+		<script src="IL2036/controllers/box-controller.js" ></script>
+		<script src="IL2036/controllers/chartController.js" ></script>
+		<script src="IL2036/charts/PieChart.js" ></script>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<link rel="stylesheet" href="css/main.css" type="text/css" />
 	</head>
 	
 	<body ng-app="IL2036" ng-controller="mainAppController" >
 		
+		<div class="header" >
+			<h3>כלכליסט {{current_year}}</h3> 
+		</div>
 		<div class="rap" >
 			
 			<div ng-include="'views/yearDisplay.html'" ng-repeat="year in years.good" >

@@ -15,6 +15,6 @@
 	
 <img ng-switch-when="image" ng-src="box.src" />
 		
-<div ng-switch-when="chart" ng-bind-html="chartDisplay" ng-controller="chartController" ng-init="init(box.type, box.src)" >
+<div ng-switch-when="chart" ng-controller="chartController" ng-attr-id="box-{{$index}}" class="chart" sb-load="init($index, box)" >
 	
 </div>
