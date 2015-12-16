@@ -205,7 +205,6 @@ function dashboard(id, fData){
 
     var hG = histoGram(sF), // create the histogram.
         pC = pieChart(tF), // create the pie-chart.
-        pC2 = pieChart(sF), // create the pie-chart.
         leg= legend(tF);  // create the legend.
         
 }
