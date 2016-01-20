@@ -5,7 +5,7 @@ function PopulationLineChart(id, data){
     var helper = ChartHelper();
     var div = d3.select(id);
    // var svgHeight = parseInt(div.style("height"), 10);
-    var svgHeight  = $(id)[0].offsetHeight;
+    var svgHeight  = parseInt($(id)[0].offsetHeight);
     var svgWidth = parseInt(div.style("width"), 10);
     var chartWidth = (svgWidth / 3) * 2;
     var chartHeight = svgHeight;
