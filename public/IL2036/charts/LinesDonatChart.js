@@ -5,7 +5,8 @@ function LineDonatChart(id, data){
     var dC = {}
     var helper = ChartHelper();
     var div = d3.select(id);
-    var svgHeight = parseInt(div.style("height"), 10);
+   // var svgHeight = parseInt(div.style("height"), 10);
+    var svgHeight = 400;
     var svgWidth = parseInt(div.style("width"), 10);
     var pieWidth = (svgWidth / 3) * 2;
     var pieHeight = svgHeight;
