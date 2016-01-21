@@ -14,20 +14,25 @@
 		<script src="IL2036/directives/sb-load.js" ></script>
 		<script src="IL2036/controllers/box-controller.js" ></script>
 		<script src="IL2036/controllers/chartController.js" ></script>
-		<script src="IL2036/charts/PieChart.js" ></script>
+		<script src="IL2036/charts/ChartsHelper.js" ></script>
+		<script src="IL2036/charts/LinesDonatChart.js" ></script>
+		<script src="IL2036/charts/SunChart.js" ></script>
+		<script src="IL2036/charts/PopulationLineChart.js" ></script>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<link rel="stylesheet" href="css/fonts.css" type="text/css" />
 		<link rel="stylesheet" href="css/main.css" type="text/css" />
+		<link rel="stylesheet" href="css/years.css" type="text/css" />
 	</head>
 	
 	<body ng-app="IL2036" ng-controller="mainAppController" >
 		
 		<div class="header" >
-			<h3>כלכליסט {{current_year}}</h3> 
+			<h3 class="calc" >כלכליסט</h3><h3>{{current_year}}</h3> 
 		</div>
 		<div class="rap" >
 			
-			<div ng-include="'views/yearDisplay.html'" ng-repeat="year in years.good" >
+			<div class="year" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.good" >
 			</div>
 		
 		</div>
