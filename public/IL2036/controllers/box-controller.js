@@ -1,9 +1,25 @@
-app.controller("boxController", ["$scope", function($scope){
+app.controller("boxController", ["$scope", "$rootScope", "$sce", function($scope,$rootScope, $sce){
 	
 	$scope.display = false;
 	
-	$scope.apear = function(){
+	$scope.apear = function(elem){
 		
-		$scope.display = true;
+		$scope.$apply(function(){
+			$scope.display = true;
+		$rootScope.setYearIndex($scope.yearIndex);
+			
+		});
+		
+	};
+	
+	$scope.init = function(yearIndex){
+		
+		$scope.yearIndex = yearIndex;
+		
+	};
+	
+	$scope.parseHtml = function(html){
+		
+		return $sce.trustAsHtml(html);
 	};
 }]);

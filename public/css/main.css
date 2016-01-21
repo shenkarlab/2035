@@ -2,13 +2,94 @@
 	
 	margin:0;
 	padding:0;
-	text-align:right;
-	text-direction: rtl;
+	
+	direction: rtl;
 }
+
+/**
+ * 	michael css
+ */
+
+path:hover
+ { 
+  opacity:0.9; 
+  }
+rect:hover 
+{  
+fill:blue; 
+}
+.axis 
+{ 
+ font: 10px sans-serif; 
+ }
+.legend tr
+{  
+  border-bottom:1px solid grey; 
+  }
+.legend tr:first-child
+{  
+  border-top:1px solid grey; 
+  }
+
+
+.axis path,
+.axis line
+ {
+  fill: blue;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+#headerChart
+{
+	width:100%;
+	height:20px;
+	
+}
+#linesDonatChart
+{
+	width:1800px;
+	height:1800px;
+	
+}
+#populationLineChart
+{
+	width:800px;
+	height:600px;
+}
+
+#sunChart
+{
+	width:900px;
+	height:600px;
+	
+}
+
+.legend
+{
+    
+    display:inline-block;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+table
+{
+  text-align: left;
+}
+.legend td
+{
+    padding:4px 5px;
+	
+    
+}
+
+/**
+ * 	michael CSS
+ */
 
 body{
 	
 	padding-top:80px;
+	text-align:justify;
 }
 
 .header{
@@ -20,12 +101,20 @@ body{
 	height:80px;
 	top:0;
 	line-height: 80px;
+	background-color: white;
+	    z-index: 100;
+	    font-family: mugrabiRegular;
 }
 
 .header h3{
 	
 	text-align: center;
-	background-color: #ccc;
+	margin:0;
+}
+.header h3.calc{
+
+	font-family: mugrabiRegular;
+	font-size: 36pt;
 }
 
 .box{
@@ -40,9 +129,13 @@ body{
 	opacity:1;
 }
 
+.year{
+	
+	
+}
+
 h1{
 	
-	text-align:center;
 	padding:10px;
 }
 
@@ -64,14 +157,13 @@ p{
 
 h2,p{
 	
-	margin:4%;
+	margin:2%;
 }
 
 .box{
 	vertical-align:top;
 	display:inline-block;
-	background-color: #eee;
-	margin:1%;
+	padding:0 1%;
 }
 
 .rap{
@@ -89,6 +181,65 @@ h2,p{
 .box.b2{width:48%;}
 .box.b3{width:31%;}
 
+.header h3{
+	
+	display: inline-block;
+	padding:0 20px;
+}
+.calc{
+	
+	background-color: #D3191D;
+	color:white;
+	margin:0;
+}
+
+.box.b1 .footer{
+	
+	border-bottom:solid 1px #000;	
+}
+.footer{
+	
+	border-bottom:solid 1px #8f8f8f;
+	margin-bottom: 20px;
+	margin-left:20px;
+	top: 0px;
+	height:20px;
+	position: relative;
+	right: 205px;
+	margin-left:205px;
+}
+.footer ul{
+	list-style: none;
+    font-size: 15pt;
+    display: inline-block;
+    padding:0 20px;
+    position: relative;
+    top:0px;
+    left: 205px;
+}
+.footer ul li:not(:last-child){
+
+	border-left:solid 2px #8f8f8f;	
+}
+.footer ul li{
+	display: inline-block;
+	margin:10px 0;
+	padding:0 5px;
+	
+}
+
+.more{
+	
+	background: url('../img/open-pixel.png') repeat-x top;
+	padding: 35px 0 15px 0;
+	    margin-top: 30px;
+}
+
+.more-button{
+	
+	display: block;
+	margin:0px auto;
+}
 
 @media (max-width:800px){
 	

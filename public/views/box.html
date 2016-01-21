@@ -6,15 +6,33 @@
 -->	
 <span ng-switch-when="paragraph" >
 		
-	<h2>{{box.title}}</h2>
-	<p>
-		{{box.body}}
-	</p>
-		
-</span>
+	<span ng-bind-html="parseHtml(box.title)" ></span>
+	<span ng-bind-html="parseHtml(box.body)" ></span>
 	
-<img ng-switch-when="image" ng-src="box.src" />
+	
+	<div class="footer" >
+		<ul>
+			<li>{{box.date}}</li>
+			<li>{{box.category}}</li>
+			<li>שתף</li>
+		</ul>
+	</div>
+</span>
+
+<div ng-switch-when="image" >
+	<img  src="{{box.src}}" />
+	<div class="footer" >
+		<ul>
+			<li>{{box.date}}</li>
+			<li>{{box.category}}</li>
+			<li>שתף</li>
+		</ul>
+	</div>
+</div>
+<div ng-switch-when="video" >
+	<img  src="{{box.src}}" />
+</div>
 		
-<div ng-switch-when="chart" ng-controller="chartController" ng-attr-id="box-{{$index}}" class="chart" sb-load="init($index, box)" >
+<div ng-switch-when="chart" ng-controller="chartController" ng-attr-id="box-{{box.chartType}}-{{$index}}" class="chart" sb-load="init($index, box)" >
 	
 </div>

@@ -1,0 +1,115 @@
+
+.year-2036 {
+
+	font-family: mugrabiRegular;	
+}
+.year-2029 {
+
+	font-family: ambivalentiCompressed;
+	
+}
+
+.year-2036 h2{
+	
+	font-size: 67pt;
+}
+
+.year .row h1{
+	
+	font-size:167pt !important;
+	    margin: 20px;
+    padding: 0;
+    line-height: 160px;
+}
+
+.year-2029 .row-1{
+	
+	background: url('../img/dots-background.png');
+}
+.year-2029 .row-2{
+	
+	background: #d7d7d7 url('../img/dots-background.png');
+}
+.year-2029 .footer ul{
+
+	top:-10px;
+	left:160px;	
+}
+.year-2029 .footer{
+	
+	top:20px;
+	right:160px;
+	margin-left:190px;
+}
+
+.year-2029 .row h1{
+	
+	font-size:137pt !important;
+	letter-spacing: 5px;	
+	padding:0;
+	margin:20px 0 0 0;
+	
+}
+.year-2029 .row h2{
+	
+	font-size:45pt !important;
+	letter-spacing: 4px;	
+	padding:0;
+	margin:0;
+	line-height: 45pt;
+	
+}
+.year-2029 .row h4{
+	
+	font-family:ambivalentiTzarRegular;
+	margin-top:80px;
+}
+
+.row b{
+	
+	background: black;
+	color:white;
+	display: block;
+	margin:5px auto;
+	padding:3px 10px;
+
+}
+
+.row b.inline{
+	
+	display: inline-block;
+	margin:0;	
+}
+
+h3{
+	
+	font-size: 33pt;
+	line-height: 43pt;
+}
+
+h4{
+	
+	font-size: 25pt;
+}
+h5{
+	
+	font-size: 18pt;
+}
+
+.year-2036 .row.expanded .box:nth-child(1) p{
+	
+	    line-height: 52px;
+}
+.year-2036 .row .box:nth-child(2) h2{
+	
+	background: url('../img/2036-div-border.png') repeat-y right;	
+	    padding-right: 70px;
+	    margin-right: 0;
+}
+.year-2036{
+	
+	background-color:#e4e4e4;
+	background-image: url('../img/dots-background.png');
+	background-repeat: repeat, repeat-x;
+	background-position: bottom, bottom;
+}

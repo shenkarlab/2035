@@ -12,6 +12,13 @@ app.controller("chartController", ["$scope", "$sce", function($scope, $sce){
 	
 	$scope.init = function(divId, box){
 		
-		window[box.chartType]("#box-0", box.data);
+		setTimeout(function(){
+			
+			d3.csv(box.csv, function(data){
+			window[box.chartType]("#box-"+box.chartType+"-"+divId,data);   
+		});	
+		},1000);
+		//window[box.chartType]("#box-0", box.data);
+		
 	};
 }]);
