@@ -4,8 +4,10 @@ function PopulationLineChart(id, data){
 	///Set Dinamic Sizes
     var helper = ChartHelper();
     var div = d3.select(id);
-    var svgHeight = parseInt(div.style("height"), 10);
+   // var svgHeight = parseInt(div.style("height"), 10);
+  //  var svgHeight  = $(id)[0].offsetHeight;
     var svgWidth = parseInt(div.style("width"), 10);
+    var svgHeight  = svgWidth / 2;
     var chartWidth = (svgWidth / 3) * 2;
     var chartHeight = svgHeight;
     var mapWidth = (svgWidth / 3) * 1;
