@@ -5,7 +5,7 @@
 		
 		<meta charset="UTF-8">
 		<meta content="utf-8" http-equiv="encoding">
-		
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 		<script src="IL2036/charts/line.js" ></script>
@@ -16,6 +16,7 @@
 		<script src="IL2036/controllers/chartController.js" ></script>
 		<script src="IL2036/charts/ChartsHelper.js" ></script>
 		<script src="IL2036/charts/LinesDonatChart.js" ></script>
+		<script src="IL2036/charts/HeaderChart.js" ></script>
 		<script src="IL2036/charts/SunChart.js" ></script>
 		<script src="IL2036/charts/PopulationLineChart.js" ></script>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -25,16 +26,105 @@
 		<link rel="stylesheet" href="css/years.css" type="text/css" />
 	</head>
 	
-	<body ng-app="IL2036" ng-controller="mainAppController" >
+	<body ng-app="IL2036" ng-controller="mainAppController" ng-switch="stage" >
 		
-		<div class="header" >
-			<h3 class="calc" >כלכליסט</h3><h3>{{current_year}}</h3> 
+		<div class="header" ng-class="stage" >
+			<h3 class="calc"  >כלכליסט</h3><h3 ng-show="stage=='timeline'" >{{current_year}}</h3> 
+			<div  id="mainGraph" ng-show="stage=='timeline'" ></div>
 		</div>
-		<div class="rap" >
-			
-			<div class="year" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.good" >
-			</div>
 		
+		<div class="intro-screen" ng-show="stage=='intro'" ng-switch-when="intro"  ng-switch='introFrameIndex' >
+			
+			<div class="frame" ng-switch-when="3" >
+				<p>
+					<b>אפשר להפוך את את התסריט הזה להזדמנות במקום לנטל.</b> הערבים והחרדים יכולים בקלות להפוך לגל העלייה מברית המועצות של תחילת שנות ה-90 ולהזניק את המשק.<br/>
+					 בהמשך נציג <b>מציאות אלטרנטיבית שבה המדינה תחליט לקחת את גורלה בידיים</b>.
+		אחרת, ככה עלולים להיראות החיים של הילדים שלכם, מעמד הביניים של עוד 20 שנה, כשכובד משקלו של המשק יוטל על כתפיהם. יותר כבד מאי פעם.<br/>
+	
+					<br/>
+					<br/>
+					<span class="underline" >
+						הראו לי את העתיד
+					</span>
+					<br/>
+					<br/>
+					
+		
+				</p>
+				<div class="footer-button" ng-click="nextIntroFrame()" >
+					<img src="img/intro-arrow.jpg" />
+				</div>
+			</div>
+			
+			<div class="frame" ng-switch-when="1" >
+				
+				<h1>בעוד 20 שנה מהיום ישראל תיראה אחרת לגמרי.</h1>
+				
+				<p>השינויים הדמוגרפיים הם עובדה מוגמרת.
+הם נתון שאין לנו דרך להשפיע עליו.
+כל התחזיות מצביעות על כך שבישראל של 2036 יהיו הרבה, הרבה פחות ידיים עובדות.
+מה זה יעשה למעמד הביניים הישראלי? מה יקרה ליוקר המחייה?
+כמה מסים נשלם? והאם נוכל להמשיך לקבל קצבאות מביטוח לאומי?
+
+<br/>
+<br/>
+
+<b>התסריט שתראו מיד אינו אפוקליפטי.</b> <br/>
+הוא תסריט בסבירות מאוד מאוד גבוהה שיקרה,
+מפני שמרביתם של האנשים שירכיבו את שוק העבודה בעוד 20 שנה כבר נולדו. 
+
+<br/>
+<br/>
+
+<b>התסריט הזה אפילו אינו פסימי במיוחד.</b><br/>
+הוא מניח, למשל, שהאוכלוסיות החרדית והערבית דווקא כן ישתלבו בשוק העבודה,
+באותו הקצב שהן משתלבות בו כיום. כלומר לאט, ובשכר נמוך.
+				</p>
+				<div class="footer-button" ng-click="nextIntroFrame()" >
+					<img src="img/intro-arrow.jpg" />
+				</div>
+			</div>
+			
+			<div class="frame" ng-switch-when="2" >
+			
+				<h1>התסריט הזה מראה כיצד הולכת להיראות מדינת ישראל בשנת 2036,</h1>
+				<p>
+					אם כל השינויים הדמוגרפיים שצפויים להתרחש אכן יתרחשו, ומבלי שהמדינה תעשה דבר.
+הוא מבוסס על סקירה של המועצה הלאומית לכלכלה, על תחזיות הלשכה המרכזית לסטטיסטיקה, על האומדנים של הביטוח הלאומי ועל שני מחקרים של משרד האוצר. לא המצאנו כלום, כל המספרים על השולחן וידועים מזה כמה שנים טובות לכל מקבלי ההחלטות. רק לפני שנתיים, מייד לאחר הבחירות הקודמות, שמעו שרי הממשלה החדשים סקירה דומה מפי יו״ר המועצה הלאומית לכלכלה שנתן להם הצצה לעשרים שנה קדימה.
+				</p>
+				<h2>אבל יש מה לעשות</h2>
+				<div class="footer-button" ng-click="nextIntroFrame()" >
+					<img src="img/white-intro-arrow.jpg" />
+				</div>
+			</div>
+			
+
+		</div>
+		
+		<div class="rap flip-container" ontouchstart="this.classList.toggle('hover');" >
+			<div class="flipper">
+				<div class="front" >
+					<div class="year" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.bad" >
+					</div>
+					<div class="intro-screen trans" ng-click="flipToGood()" >
+						
+						<p class="frame" >
+							בואו ננסה להתבונן בתסריט אחר, אופטימי הרבה יותר,</br>
+<b>שבו הממשלה מחליטה לנקוט באמצעים כבר עכשיו</b><br/>
+ולהוציא לדרך תוכנית להתמודדות עם השינויים הדמוגרפיים.
+
+						</p>
+						<div class="footer-button" ng-click="nextIntroFrame()" >
+							<img src="img/intro-arrow.jpg" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="back" >
+					<div class="year" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.good" >
+					</div>
+				</div>
+			</div>
 		</div>
 		
 	</body>

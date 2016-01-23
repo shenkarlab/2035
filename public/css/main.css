@@ -100,10 +100,26 @@ body{
 	right:0;
 	height:80px;
 	top:0;
-	line-height: 80px;
+	
 	background-color: white;
 	    z-index: 100;
 	    font-family: mugrabiRegular;
+}
+
+.header h3{
+	
+	line-height: 60px;
+}
+
+.header.intro h3{
+	
+	line-height:80px;
+}
+
+#mainGraph{
+	
+	height:20px;
+	
 }
 
 .header h3{
@@ -241,7 +257,90 @@ h2,p{
 	margin:0px auto;
 }
 
-@media (max-width:800px){
+.intro-screen{
+	
+	position:fixed;
+	top:80px;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color: #ffbdbb;
+	font-size: 17pt;
+	font-family: shaulRegular;
+	z-index:100;
+}
+
+.intro-screen.trans{
+	
+	height:500px;
+	padding-top:100px;
+	position: relative;
+}
+
+.intro-screen.trans.frame{
+	
+	margin-top:50%;
+}
+
+.intro-screen h1,h2{
+
+	font-size: 21pt;	
+}
+
+.frame:first-child{
+	margin:100px auto 50px auto;
+}
+.frame{
+	width:80%;
+	max-width:700px;
+	margin:20px auto 50px auto;
+	text-align:center;
+}
+
+.intro-screen p{
+	
+	font-size: 17pt;
+	font-family: shaulRegular;
+	
+	line-height: 28pt;
+	font-weight: bold;
+	
+}
+
+.intro-screen .footer-button img{
+	
+	margin: auto;
+    display: block;	
+}
+
+
+.intro-screen .footer-button{
+	
+	position: absolute;
+	bottom:0;
+	height:100px;
+	left:0;
+	right:0;
+}
+
+.underline{
+	
+	text-decoration: underline;
+}
+
+.intro-screen p b, .intro-screen h2{
+	
+	font-weight:inherit;
+	background-color: #fff;
+	padding:5px 3px;
+}
+
+.intro-screen h2{
+	
+	display: inline;
+}
+
+@media screen and (max-width:800px){
 	
 	.box, .box.b2, .box.b3{
 		
@@ -250,3 +349,45 @@ h2,p{
 	}
 }
 
+/**
+ * 	flip anim css
+ */
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+}
+	/* flip the pane when hovered */
+	.flip-container.flipped .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}

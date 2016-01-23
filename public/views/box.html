@@ -4,7 +4,7 @@
 	This view represens a box.
 
 -->	
-<span ng-switch-when="paragraph" >
+<span ng-switch-default >
 		
 	<span ng-bind-html="parseHtml(box.title)" ></span>
 	<span ng-bind-html="parseHtml(box.body)" ></span>
@@ -33,6 +33,6 @@
 	<img  src="{{box.src}}" />
 </div>
 		
-<div ng-switch-when="chart" ng-controller="chartController" ng-attr-id="box-{{box.chartType}}-{{$index}}" class="chart" sb-load="init($index, box)" >
+<div ng-switch-when="chart" ng-controller="chartController" ng-attr-id="box-{{box.chartType}}-{{year.year}}-{{$index}}" class="chart" sb-load="init($index, box, year)" >
 	
 </div>

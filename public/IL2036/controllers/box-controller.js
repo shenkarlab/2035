@@ -12,7 +12,7 @@ app.controller("boxController", ["$scope", "$rootScope", "$sce", function($scope
 		
 	};
 	
-	$scope.init = function(yearIndex){
+	$scope.init = function(yearIndex, year){
 		
 		$scope.yearIndex = yearIndex;
 		
