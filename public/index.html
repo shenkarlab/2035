@@ -24,6 +24,7 @@
 		<link rel="stylesheet" href="css/fonts.css" type="text/css" />
 		<link rel="stylesheet" href="css/main.css" type="text/css" />
 		<link rel="stylesheet" href="css/years.css" type="text/css" />
+		<link rel="stylesheet" href="css/good-senario.css" type="text/css" />
 	</head>
 	
 	<body ng-app="IL2036" ng-controller="mainAppController" ng-switch="stage" >
@@ -106,7 +107,7 @@
 				<div class="front" >
 					<div class="year" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.bad" >
 					</div>
-					<div class="intro-screen trans" ng-click="flipToGood()" >
+					<div class="intro-screen trans"  >
 						
 						<p class="frame" >
 							בואו ננסה להתבונן בתסריט אחר, אופטימי הרבה יותר,</br>
@@ -114,7 +115,7 @@
 ולהוציא לדרך תוכנית להתמודדות עם השינויים הדמוגרפיים.
 
 						</p>
-						<div class="footer-button" ng-click="nextIntroFrame()" >
+						<div class="footer-button" ng-click="flipToGood()" >
 							<img src="img/intro-arrow.jpg" />
 						</div>
 					</div>
