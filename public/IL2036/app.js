@@ -617,7 +617,7 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 	$scope.flipToGood = function(){
 		
 		$(".flip-container").addClass("flipped");
-		$("body").scrollTop(0);
+		$("body").animate({scrollTop:0}, 400);
 	};
 	
 	$scope.introFrameIndex=1;
