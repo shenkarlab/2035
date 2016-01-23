@@ -12,7 +12,8 @@ function HeaderChart(id, data,year){
 	console.log(yearID);
 	
     var div = d3.select(id);
-    var svgHeight = parseInt(div.style("height"), 10);
+   // var svgHeight = parseInt(div.style("height"), 10);
+    var svgHeight  = parseInt($(id)[0].offsetHeight,10);
     var svgWidth = parseInt(div.style("width"), 10);
     var padding = svgWidth / 500;
 
