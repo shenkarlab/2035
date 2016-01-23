@@ -11,7 +11,7 @@
 	<div class="row row-{{$index+1}} {{(more) ? 'expanded' : ''}}" ng-class=""  ng-repeat="row in ((more) ? year.long_rows : year.short_rows) track by $index" >
 	
 		<!-- display all boxes -->
-		<div ng-include="'views/box.html'" ng-class="(display) ? 'anim-in' : 'hide'" ng-controller="boxController" ng-init="init($index)" ng-scroll-into="apear" ng-repeat="box in row.boxes track by $index" ng-switch="box.type" class="box b{{box.weight}} {{(display) ? 'anim-in' : ''}}" ></div>
+		<div ng-include="'views/box.html'" ng-class="(display) ? 'anim-in' : 'hide'" ng-controller="boxController" ng-init="init($index, year.year)" ng-scroll-into="apear" ng-repeat="box in row.boxes track by $index" ng-switch="box.type" class="box b{{box.weight}} {{(display) ? 'anim-in' : ''}}" ></div>
 	
 	</div>
 	

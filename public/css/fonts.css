@@ -10,3 +10,7 @@
     font-family: ambivalentiTzarRegular;
     src: url(../fonts/ambivalenti-tzar-aaa-regular.otf);
 }
+@font-face {
+    font-family: shaulRegular;
+    src: url(../fonts/Shaul-Regular.otf);
+}
