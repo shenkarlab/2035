@@ -99,6 +99,27 @@ function ChartHelper(){
         return ans;
         
     }
+
+	helper.MakeSocialSecurityLegData = function(yearsData, yearID){
+        var ans = [{
+            "publicName": "Income",
+            "name": "income",
+            "populatoin": yearsData[yearID].income,
+            "color": helper.segSocialSecurityColor("income")
+        }, {
+            "publicName": "Spending",
+            "name": "spending",
+            "populatoin": yearsData[yearID].spending,
+            "color": helper.segSocialSecurityColor("spending")
+        }, {
+            "publicName": "Diffrence",
+            "name": "diffrence",
+            "populatoin": yearsData[yearID].diffrence,
+            "color": helper.segSocialSecurityColor("diffrence")
+        }];
+        return ans;
+        
+    }
 	
 	helper.makeExpencesInnerData = function (number, yearData){
     var newData = [{
@@ -173,20 +194,38 @@ function ChartHelper(){
                 }
     }
     helper.getLegFontSize = function(legWidth){
-        if (legWidth >= 400) {
-            return "26px";
+        if (legWidth >= 450) {
+            return "30px";
         }
         else 
-            if (legWidth >= 300) {
-                return "20px";
+            if (legWidth >= 350) {
+                return "25px";
             }
             else 
-                if (legWidth >= 200) {
-                    return "16px";
+                if (legWidth >= 250) {
+                    return "20px";
                 }
                 else 
                     if (legWidth >= 150) {
-                        return "12px";
+                        return "15px";
+                    }
+                    else {
+                        return "8px";
+                    }
+    }
+	
+	 helper.getPieFontSize = function(legWidth){
+        if (legWidth >= 700) {
+            return "25px";
+        }
+        else if (legWidth >= 400) {
+                return "20px";
+            }
+            else if (legWidth >= 200) {
+                    return "15px";
+                }
+                else if (legWidth >= 100) {
+                        return "10px";
                     }
                     else {
                         return "8px";
@@ -205,6 +244,9 @@ function ChartHelper(){
                 return "0%";
             }
     }
+	
+	
+	
     
     
     
