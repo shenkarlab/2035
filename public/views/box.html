@@ -10,7 +10,7 @@
 	<div ng-bind-html="parseHtml(box.body)" ></div>
 	
 	
-	<div class="footer" >
+	<div class="footer" ng-show="box.date!=undefined" >
 		<ul>
 			<li>{{box.date}}</li>
 			<li>{{box.category}}</li>

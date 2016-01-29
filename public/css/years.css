@@ -285,3 +285,90 @@ h5{
 	font-size: 18pt;
 	font-weight: bold;
 }
+
+/**
+ * good section	
+ * 
+ * 2016 - good
+ * 
+ */
+.year.good b{
+	
+	background: #fff;
+	color:inherit;
+	display: initial;
+}
+.year.good .year-2016{
+	
+	background: #eae9e4;
+	font-family:shaulRegular;
+}
+.year.good .year-2016 h1{
+	font-size:44pt;
+	line-height: 50pt;
+	font-weight: bold;
+	font-family:shaulBold;
+	margin:10px auto 10px auto;
+}
+.year.good .year-2016 h2{
+	font-size:21pt;
+	line-height: 32pt;
+}
+.year.good .year-2016 h3{
+	
+	margin:10px auto 10px auto;
+	font-weight: bold;
+	font-size:40pt;
+	line-height: 45pt;
+	font-family:shaulBold;
+}
+.year.good .year-2016:not(.expanded) .row-1 .i1{
+
+	margin:25px 1.5%;
+	width:45%;
+	background: #ffffff;
+	border-radius: 9px;	
+}
+.year.good .year-2016 h4{
+
+	margin-top:20px;
+	font-size:20pt;
+	line-height:35pt;	
+}
+.year.good .year-2016 h6{
+
+	font-size:14pt;
+	line-height:25pt;	
+}
+.year.good .year-2016.expanded .row-2 .i1 h5{
+	
+	font-size:25pt;
+	line-height:37pt;	
+	font-weight: bold;
+	padding:20px;
+	background: #ffffff;
+	border-radius: 9px;	
+}
+
+/**
+ * 	good -  2019
+ */
+.year.good .year-2019 {
+	
+	background: #fde4e3;
+	font-family: almoniTzar;
+}
+.year.good .year-2019 .footer{
+	
+	font-family: shaulRegular;
+}
+.year.good .year-2019 h1{
+	font-size:53pt;	
+}
+.year.good .year-2019 h2{
+	font-size:23pt;	
+}
+.year.good .year-2019 h3{
+	font-size:41pt;
+	line-height: 60pt;	
+}
