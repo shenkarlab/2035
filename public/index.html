@@ -115,7 +115,7 @@
 				<div class="front" >
 					
 					<div id="badTimeline" ng-show="stage=='timeline' || showTransFrame" >
-						<div class="year bad" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.bad track by $index" year="{{year.year}}" ng-scroll-into="yearScrolledInto" ng-init="yearLoaded($index)" >
+						<div class="year good" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.good track by $index" year="{{year.year}}" ng-scroll-into="yearScrolledInto" ng-init="yearLoaded($index)" >
 						</div>
 					</div>
 					

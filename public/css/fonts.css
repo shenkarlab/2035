@@ -18,3 +18,7 @@
     font-family: shaulRegular;
     src: url(../fonts/Shual-Regular.ttf);
 }
+@font-face {
+    font-family: shaulBold;
+    src: url(../fonts/Shual-Bold.ttf);
+}
