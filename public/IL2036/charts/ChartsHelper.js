@@ -21,9 +21,9 @@ function ChartHelper(){
 	
 	helper.segSocialSecurityColor = function(c){
         return {
-            "income": "#00c4f1",
-            "spending": "#0052bb",
-            "diffrence": "#ff9f03",
+            "income": "#82afd8",
+            "spending": "#d51527",
+            "diffrence": "#82afd8",
             "none": "#DDDDDD"
         }[c];
     }
@@ -37,11 +37,11 @@ function ChartHelper(){
     }
     helper.segExpencesColor = function(c){
         return {
-            "health": "#807dba",
-            "education": "#e08214",
-            "pension": "#41ab5d",
-            "socialSecurity": "#41abd5",
-            "agePension": "#11dd51"
+            "health": "#008ffc",
+            "education": "#1e9f4d",
+            "pension": "#82afd8",
+            "socialSecurity": "#7d76b4",
+            "agePension": "#802d82"
         }[c];
     }
     
@@ -81,17 +81,17 @@ function ChartHelper(){
     
     helper.MakePopulationLegData = function(yearsData, yearID){
         var ans = [{
-            "publicName": "Other",
+            "publicName": "אחרים",
             "name": "other",
             "populatoin": yearsData[yearID].jewTotal,
             "color": helper.segPopulationColor("other")
         }, {
-            "publicName": "Arab",
+            "publicName": "ערבים",
             "name": "arab",
             "populatoin": yearsData[yearID].arabTotal,
             "color": helper.segPopulationColor("arab")
         }, {
-            "publicName": "Ortodox",
+            "publicName": "חרדים",
             "name": "jew",
             "populatoin": yearsData[yearID].ultraOrthodoxTotal,
             "color": helper.segPopulationColor("jew")
@@ -102,17 +102,17 @@ function ChartHelper(){
 
 	helper.MakeSocialSecurityLegData = function(yearsData, yearID){
         var ans = [{
-            "publicName": "Income",
+            "publicName": "הכנסות",
             "name": "income",
             "populatoin": yearsData[yearID].income,
             "color": helper.segSocialSecurityColor("income")
         }, {
-            "publicName": "Spending",
+            "publicName": "הוצאות",
             "name": "spending",
             "populatoin": yearsData[yearID].spending,
             "color": helper.segSocialSecurityColor("spending")
         }, {
-            "publicName": "Diffrence",
+            "publicName": "עודף",
             "name": "diffrence",
             "populatoin": yearsData[yearID].diffrence,
             "color": helper.segSocialSecurityColor("diffrence")
@@ -122,29 +122,29 @@ function ChartHelper(){
     }
 	
 	helper.makeExpencesInnerData = function (number, yearData){
-    var newData = [{
+    var newData = [{ 
         "name": "health",
-        "publicName": "Health",
+        "publicName": "בריאות",
         "populatoin": yearData[number].health,
         "color": helper.segExpencesColor("health")
     }, {
         "name": "education",
-        "publicName": "Education",
+        "publicName": "חינוך",
         "populatoin": yearData[number].education,
         "color": helper.segExpencesColor("education")
     }, {
         "name": "pension",
-        "publicName": "Pension",
+        "publicName": "פנסיה",
         "populatoin": yearData[number].pension,
         "color": helper.segExpencesColor("pension")
     }, {
         "name": "socialSecurity",
-        "publicName": "Social Security",
+        "publicName": "ביטוח לאומי",
         "populatoin": yearData[number].socialSecurity,
         "color": helper.segExpencesColor("socialSecurity")
     }, {
         "name": "agePension",
-        "publicName": "Age Pension",
+        "publicName": "קצבאות",
         "populatoin": yearData[number].agePension,
         "color": helper.segExpencesColor("agePension")
     }];
@@ -179,15 +179,15 @@ function ChartHelper(){
     
     helper.getLegRectWidth = function(legWidth){
         if (legWidth >= 400) {
-            return "26";
+            return "35";
         }
         else 
             if (legWidth >= 300) {
-                return "22";
+                return "35";
             }
             else 
                 if (legWidth >= 200) {
-                    return "16";
+                    return "20";
                 }
                 else {
                     return "10";
@@ -195,22 +195,22 @@ function ChartHelper(){
     }
     helper.getLegFontSize = function(legWidth){
         if (legWidth >= 450) {
-            return "30px";
+            return "45px";
         }
         else 
             if (legWidth >= 350) {
-                return "25px";
+                return "40px";
             }
             else 
                 if (legWidth >= 250) {
-                    return "20px";
+                    return "30px";
                 }
                 else 
                     if (legWidth >= 150) {
-                        return "15px";
+                        return "20px";
                     }
                     else {
-                        return "8px";
+                        return "12px";
                     }
     }
 	
@@ -219,13 +219,13 @@ function ChartHelper(){
             return "25px";
         }
         else if (legWidth >= 400) {
-                return "20px";
+                return "25px";
             }
             else if (legWidth >= 200) {
-                    return "15px";
+                    return "20px";
                 }
                 else if (legWidth >= 100) {
-                        return "10px";
+                        return "15px";
                     }
                     else {
                         return "8px";
