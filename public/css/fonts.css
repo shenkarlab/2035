@@ -1,6 +1,6 @@
 @font-face {
     font-family: mugrabiRegular;
-    src: url(../fonts/mugrabi-aaa-bold.otf);
+    src: url(../fonts/mugrabi-aaa-regular.otf);
 }
 @font-face {
     font-family: ambivalentiCompressed;
@@ -11,6 +11,10 @@
     src: url(../fonts/ambivalenti-tzar-aaa-regular.otf);
 }
 @font-face {
+    font-family: almoniTzar;
+    src: url(../fonts/almoni-tzar-aaa-regular.otf);
+}
+@font-face {
     font-family: shaulRegular;
-    src: url(../fonts/Shaul-Regular.otf);
+    src: url(../fonts/Shual-Regular.ttf);
 }

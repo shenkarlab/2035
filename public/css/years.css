@@ -3,10 +3,10 @@
 
 	font-family: mugrabiRegular;	
 }
-.year-2029 {
+.year-2029 .row-1:not(.expanded){
 
 	font-family: ambivalentiCompressed;
-	
+
 }
 
 .year-2036 h2{
@@ -16,15 +16,19 @@
 
 .year .row h1{
 	
-	font-size:167pt !important;
-	    margin: 20px;
+	    font-size: 12.9vw;
+	    margin: 20px 0;
     padding: 0;
-    line-height: 160px;
 }
 
+.year-2029{
+	
+	font-family:ambivalentiTzarRegular;	
+	background: #FAF9F9 url('../img/dots-background.png');	
+}
 .year-2029 .row-1{
 	
-	background: url('../img/dots-background.png');
+	background: #FAF9F9 url('../img/dots-background.png');
 }
 .year-2029 .row-2{
 	
@@ -32,19 +36,46 @@
 }
 .year-2029 .footer ul{
 
-	top:-10px;
 	left:160px;	
 }
-.year-2029 .footer{
-	
+.year.bad b{
+
+	background-color: #000;
+	color:white;	
+	    display: initial;
+}
+.year-2029 p{
+
+	font-size: 28pt;
+	font-weight: bold;	
+}
+.year-2029 h5{
+
+	font-size: 29pt;
+	font-weight: bold;	
+}
+.year-2029 h4{
+
+	font-size: 40pt;
+	font-weight: bold;	
+}
+
+.year-2029 .row:not(.expanded)  .footer{
 	top:20px;
+}
+.year-2029 .footer{
+
+font-size:18pt;
+	font-family:ambivalentiTzarRegular;	
+	
 	right:160px;
 	margin-left:190px;
 }
 
-.year-2029 .row h1{
+.year-2029 .row-1 h1{
 	
-	font-size:137pt !important;
+	font-size:137pt;
+	line-height: 155pt;
 	letter-spacing: 5px;	
 	padding:0;
 	margin:20px 0 0 0;
@@ -52,7 +83,7 @@
 }
 .year-2029 .row h2{
 	
-	font-size:45pt !important;
+	font-size:45pt;
 	letter-spacing: 4px;	
 	padding:0;
 	margin:0;
@@ -60,9 +91,50 @@
 	
 }
 .year-2029 .row h4{
+
+	font-weight: bold;	
+}
+.year-2029 .row h4, .year-2029 .row h3{
+	
+	font-size:29px;
+	font-family:ambivalentiTzarRegular;
+	margin:20px auto 30px auto;
+}
+ .year-2029:not(.expanded) .row h3, .year-2029:not(.expanded) h4{
+
+	margin-top:50px;
+	margin-bottom:20px;
+	font-size:40pt;
+	font-weight: normal;	
+}
+
+.year-2029:not(.expanded) h4{
+	
+	font-weight: bolder;
+}
+
+.year-2029.expanded .row-1 p{
+	
+	font-size: 28pt;
+	line-height: 40pt;	
+} 
+.year-2029.expanded .row h4{
+	
+	font-size:29px;
+	font-weight: bolder;
+	line-height: 40pt;		
+}
+.year-2029.expanded .row h5{
+	
+	font-size: 40pt;
+	font-weight: 100;
+	line-height: 45pt;
+}
+.year-2029.expanded .row h4, .year-2029.expanded .row h5{
+	
 	
 	font-family:ambivalentiTzarRegular;
-	margin-top:80px;
+	margin:20px auto 30px auto;
 }
 
 .row b{
@@ -112,4 +184,104 @@ h5{
 	background-image: url('../img/dots-background.png');
 	background-repeat: repeat, repeat-x;
 	background-position: bottom, bottom;
+}
+
+
+/***
+ *	2024 bad 
+ */
+.year.bad .year-2024, .year.bad .year-2019{
+	
+	background: #f7f7f7;
+	font-family: ambivalentiTzarRegular;
+}
+.year.bad .year-2024 h1{
+	
+	font-size: 88pt;
+	font-weight: bold;	
+}
+.year.bad .year-2024 h2{
+	
+	font-size: 55pt;	
+}
+.year.bad .year-2024 h3{
+	
+	font-size: 33pt;	
+}
+.year.bad .year-2024 h5{
+	
+	margin-top:30px;
+	font-size:32pt;
+	line-height: 45pt;	
+}
+.year.bad .year-2024 h4{
+	
+	margin-top:30px;
+	font-weight: bold;
+	font-size:29pt;	
+}
+.year.bad .year-2024 .footer{
+
+	font-size: 18pt;	
+}
+
+
+/**
+ * 	2019 bad
+ */
+
+.year.bad .year-2019 h1{
+	
+	font-size:33pt;
+	line-height: 42pt;
+}
+.year.bad .year-2019 h2{
+	
+	font-size:20pt;
+	line-height: 40pt;
+	letter-spacing: -5;
+}
+
+/**
+ * 	2016 bad
+ */
+.year.bad .year-2016{
+	
+	background: #e2e3f2;
+}
+
+.year.bad .year-2016 h1{
+
+	font-size: 37pt;
+	line-height: 45pt;	
+	font-weight: bolder;
+	font-family: ambivalentiTzarRegular;
+}
+.year.bad .year-2016 h2{
+
+	font-size: 44pt;
+	line-height: 45pt;	
+	font-weight:bold ;
+	font-family: shaulRegular;
+}
+.year.bad .year-2016 h3{
+
+	font-size: 19pt;
+	line-height: 29pt;	
+	font-family: shaulRegular;
+}
+.year.bad .year-2016 h4{
+
+	margin-top:20px;
+	font-size: 22pt;
+	line-height: 38pt;	
+	font-family: almoniTzar;
+	font-weight: 100;
+}
+
+.year.bad .year-2016 .footer ul{
+	
+	font-family: shaulRegular;
+	font-size: 18pt;
+	font-weight: bold;
 }

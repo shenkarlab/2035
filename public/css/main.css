@@ -6,9 +6,18 @@
 	direction: rtl;
 }
 
+h1,h2,h3,h4{
+	
+	font-weight: 100;
+}
+
 /**
  * 	michael css
  */
+
+.year{
+	
+}
 
 path:hover
  { 
@@ -31,6 +40,18 @@ fill:blue;
   border-top:1px solid grey; 
   }
 
+body.switchTimeline{
+
+	transition:all .3s;
+	background: #FFBDBB;	
+}
+body.switchTimeline #badTimeline{
+	
+	transition:all 1.3s;
+	height:1px;
+	opacity:0;
+	overflow: hidden;
+}
 
 .axis path,
 .axis line
@@ -111,7 +132,7 @@ body{
 	line-height: 60px;
 }
 
-.header.intro h3{
+.header.intro h3, body.switchTimeline .header h3{
 	
 	line-height:80px;
 }
@@ -152,7 +173,7 @@ body{
 
 h1{
 	
-	padding:10px;
+	padding:10px 0;
 }
 
 h3{
@@ -257,24 +278,44 @@ h2,p{
 	margin:0px auto;
 }
 
-.intro-screen{
+.light{
 	
+	color:white;
+}
+
+.intro-screen:not(.rel){
+
 	position:fixed;
 	top:80px;
 	left:0;
 	right:0;
-	bottom:0;
+	bottom:0;	
+}
+.intro-screen{
+	
 	background-color: #ffbdbb;
 	font-size: 17pt;
 	font-family: shaulRegular;
 	z-index:100;
 }
+.intro-screen.rel, .intro-screen.rel .frame{
+	
+	position: relative;	
+}
 
+.intro-screen.trans .frame{
+	position: relative;	
+}
 .intro-screen.trans{
 	
 	height:500px;
-	padding-top:100px;
 	position: relative;
+}
+
+body.switchTimeline .intro-screen.trans{
+	
+	transition:all .3s;
+	
 }
 
 .intro-screen.trans.frame{
@@ -282,28 +323,46 @@ h2,p{
 	margin-top:50%;
 }
 
-.intro-screen h1,h2{
+.intro-screen.trans.full{
+	
+	
+}
 
-	font-size: 21pt;	
+.intro-screen h1, .intro-screen h2{
+
+	font-size: 21pt;
+	font-weight: bold;	
 }
 
 .frame:first-child{
-	margin:100px auto 50px auto;
 }
+
+.intro-screen:not(.rel) .frame{
+	
+	top:80px;
+	position:fixed;
+	bottom:100px;
+	left:0;
+	right:0;
+}
+
 .frame{
-	width:80%;
+	
 	max-width:700px;
-	margin:20px auto 50px auto;
 	text-align:center;
+	overflow-y: scroll;
+	    margin: auto;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
 }
 
 .intro-screen p{
 	
-	font-size: 17pt;
-	font-family: shaulRegular;
-	
+	font-size: 16pt;
+	font-family: shaulRegular;	
 	line-height: 28pt;
-	font-weight: bold;
 	
 }
 
@@ -338,15 +397,6 @@ h2,p{
 .intro-screen h2{
 	
 	display: inline;
-}
-
-@media screen and (max-width:800px){
-	
-	.box, .box.b2, .box.b3{
-		
-		display:block !important;
-		width:98% !important;
-	}
 }
 
 /**
@@ -391,3 +441,35 @@ h2,p{
 .back {
 	transform: rotateY(180deg);
 }
+
+/**
+ * 	mobile design
+ */
+@media screen and (max-width:800px){
+
+	.frame{
+		
+		display: block;
+	}
+	
+	.box, .box.b2, .box.b3{
+		
+		display:block !important;
+		width:100% !important;
+		padding:0;
+		margin:auto;
+	}
+	
+	.box > *{
+		
+		margin:1%;
+	}
+	
+	.box h1{
+		
+		font-size: 60pt !important;
+	}
+}
+
+
+
