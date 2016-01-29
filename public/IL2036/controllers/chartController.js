@@ -14,15 +14,17 @@ app.controller("chartController", ["$scope", "$sce", function($scope, $sce){
 	
 	$scope.init = function(divId, box, year){
 		
-		if(loaded) return;
-		loaded = true;
-		
-		setTimeout(function(){
+		$scope.loadChart = function(){
+			if($scope.loaded) return;
+			$scope.loaded = true;
 			
-			d3.csv(box.csv, function(data){
-			window[box.chartType]("#box-"+box.chartType+"-"+year.year+"-"+divId,data);   
-		});	
-		},10);
+			setTimeout(function(){
+				
+				d3.csv(box.csv, function(data){
+				window[box.chartType]("#box-"+box.chartType+"-"+year.year+"-"+divId,data);   
+			});	
+			},10);
+		};
 		//window[box.chartType]("#box-0", box.data);
 		
 	};

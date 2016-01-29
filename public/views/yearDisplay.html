@@ -3,7 +3,7 @@
 	Display the data of the year object
 	
 -->
-<div class="year-{{year.year}}" >
+<div id="{{year.year}}" class="year-{{year.year}} {{(more) ? 'expanded' : ''}}" >
 	
 	<h1 ng-show="year.title.legnth > 0">{{year.title}}</h1>
 	
@@ -11,13 +11,12 @@
 	<div class="row row-{{$index+1}} {{(more) ? 'expanded' : ''}}" ng-class=""  ng-repeat="row in ((more) ? year.long_rows : year.short_rows) track by $index" >
 	
 		<!-- display all boxes -->
-		<div ng-include="'views/box.html'" ng-class="(display) ? 'anim-in' : 'hide'" ng-controller="boxController" ng-init="init($index, year.year)" ng-scroll-into="apear" ng-repeat="box in row.boxes track by $index" ng-switch="box.type" class="box b{{box.weight}} {{(display) ? 'anim-in' : ''}}" ></div>
+		<div ng-include="'views/box.html'" ng-class="(display) ? 'anim-in' : 'hide'" ng-controller="boxController" ng-init="init($index, year.year);" ng-scroll-into="apear" ng-repeat="box in row.boxes track by $index" ng-switch="box.type" class="box b{{box.weight}} {{(display) ? 'anim-in' : ''}}" ></div>
 	
 	</div>
 	
-	<div class="more" >
-		<img class="more-button" ng-show="!more" src="img/more-button.png" ng-click="more=(!more)" />
-		<img class="more-button" ng-show="more" src="img/close-arrow.png" ng-click="more=(!more)" />
+	<div class="more" ng-click="scrollToYear(year.year); more=(!more)">
+		<img class="more-button" ng-show="!more" src="img/more-button.png"  />
+		<img class="more-button" ng-show="more" src="img/close-arrow.png" />
 	</div>
-	
 </div>

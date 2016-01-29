@@ -14,6 +14,7 @@ app.controller("boxController", ["$scope", "$rootScope", "$sce", function($scope
 	
 	$scope.init = function(yearIndex, year){
 		
+		if($scope.lastScrolledYear == year) $scope.display=true;
 		$scope.yearIndex = yearIndex;
 		
 	};
