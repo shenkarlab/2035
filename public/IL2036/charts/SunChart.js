@@ -9,9 +9,11 @@ function SunChart(id, data){
 
     var isDoneToMake = false;
     var div = d3.select(id);
-    var svgHeight  = parseInt($(id)[0].offsetHeight,10);
+	 var svgHeight  = 593;
+	var svgWidth  = 967;
+  //  var svgHeight  = parseInt($(id)[0].offsetHeight,10);
    // var svgHeight = parseInt(div.style("height"), 10);
-    var svgWidth = parseInt(div.style("width"), 10);
+  //  var svgWidth = parseInt(div.style("width"), 10);
     var pieWidth = (svgWidth / 3) * 2;
     var pieHeight = svgHeight;
     var mapWidth = (svgWidth / 3) * 1;
@@ -257,17 +259,17 @@ function SunChart(id, data){
 		var translateWidth =  helper.getLegTableTranslateWidth(mapWidth);
 		var legData = [{
         "name": "other",
-        "publicName": "Other",
+        "publicName": "אחרים",
         "working": yearData.jew,
         "color": helper.segPopulationColor("other")
     }, {
        "name": "arab",
-        "publicName": "Arab",
+        "publicName": "ערבים",
         "working": yearData.arab,
         "color": helper.segPopulationColor("arab")
     }, {
        "name": "jew",
-        "publicName": "Ortodox",
+        "publicName": "חרדים",
         "working": yearData.ortodox,
         "color": helper.segPopulationColor("jew")
     }];
