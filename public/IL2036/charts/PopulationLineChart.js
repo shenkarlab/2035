@@ -4,15 +4,18 @@ function PopulationLineChart(id, data){
 	///Set Dinamic Sizes
     var helper = ChartHelper();
     var div = d3.select(id);
-   // var svgHeight = parseInt(div.style("height"), 10);
-    var svgHeight  = parseInt($(id)[0].offsetHeight,10);
-    var svgWidth = parseInt(div.style("width"), 10);
+    var svgHeight  = 593;
+	var svgWidth  = 967;
+    // var svgHeight = parseInt(div.style("height"), 10);
+    // var svgWidth = parseInt(div.style("width"), 10);
+  //  var svgHeight  = parseInt($(id)[0].offsetHeight,10);
+	//var svgWidth = parseInt($(id)[0].offsetWidth,10);
     var chartWidth = (svgWidth / 3) * 2;
     var chartHeight = svgHeight;
     var mapWidth = (svgWidth / 3) * 1;
     var mapHeight = svgHeight;
     
-    var paddingLeft = 0.05 * chartWidth;
+    var paddingLeft = 0.15 * chartWidth;
 	var paddingRight = 0.05 * chartWidth;
     var botPadding = 0.05 * chartHeight;
 	var paddingTop = 0.1 * chartHeight;
@@ -62,7 +65,7 @@ function PopulationLineChart(id, data){
 
     var axisx = svg.append("g").attr("class", "x-axis").attr("transform", "translate(" + 0 + "," + (chartHeight - botPadding) + ")").attr("font-size", "10px").call(widthAxis);
     
-    var heightAxis = d3.svg.axis().scale(heightScale).orient("left").ticks(10).tickSize(0, 1).tickFormat(function(d){
+    var heightAxis = d3.svg.axis().scale(heightScale).orient("right").ticks(10).tickSize(1, 1).tickFormat(function(d){
         return (Math.round((d) / 100000) / 10) + "M";
     });
     
@@ -133,7 +136,7 @@ function PopulationLineChart(id, data){
         console.log("Done Painting: ");
         isDoneToMake = true;
         PaintGraphBW();
-		 sideText.UpdateBW();
+		sideText.UpdateBW();
     }
     
     function grapthLineUpdate(i){
