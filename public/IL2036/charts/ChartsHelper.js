@@ -59,6 +59,10 @@ function ChartHelper(){
         return (Math.round((d) / 100000) / 10);
     }
     
+      helper.getInLargeMilions = function(d){
+        return (Math.round((d) / 10000) / 100);
+    }
+    
     helper.GetMaxPopulation = function(pData, year){
         return +pData[year].jewTotal + +pData[year].arabTotal + +pData[year].ultraOrthodoxTotal;
     }
