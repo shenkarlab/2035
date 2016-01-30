@@ -172,11 +172,14 @@ h5{
 	
 	    line-height: 52px;
 }
+
+@media screen (min-width:500px){
 .year.bad .year-2036 .row .box:nth-child(2) h2{
 	
 	background: url('../img/2036-div-border.png') repeat-y right;	
 	    padding-right: 70px;
 	    margin-right: 0;
+}
 }
 .year.bad .year-2036{
 	

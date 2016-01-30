@@ -10,15 +10,6 @@ app.controller("boxController", ["$scope", "$rootScope", "$sce", function($scope
 			
 		});
 		
-		if(document.body.clientWidth < 600){
-		
-			//$("body .row *").each(function(){
-				try{
-				$(elem).css({fontSize:(parseInt($(this).css(fontSize))*.1)+"pt"});
-				}catch(err){}
-			//});
-		}	
-		
 	};
 	
 	$scope.init = function(yearIndex, year){
