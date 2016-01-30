@@ -3,7 +3,7 @@
 
 	font-family: mugrabiRegular;	
 }
-.year-2029 .row-1:not(.expanded){
+.year.bad .year-2029 .row-1:not(.expanded){
 
 	font-family: ambivalentiCompressed;
 
@@ -21,20 +21,20 @@
     padding: 0;
 }
 
-.year-2029{
+.year.bad .year-2029{
 	
 	font-family:ambivalentiTzarRegular;	
 	background: #FAF9F9 url('../img/dots-background.png');	
 }
-.year-2029 .row-1{
+.year.bad .year-2029 .row-1{
 	
 	background: #FAF9F9 url('../img/dots-background.png');
 }
-.year-2029 .row-2{
+.year.bad .year-2029 .row-2{
 	
 	background: #d7d7d7 url('../img/dots-background.png');
 }
-.year-2029 .footer ul{
+.year.bad .year-2029 .footer ul{
 
 	left:160px;	
 }
@@ -44,26 +44,26 @@
 	color:white;	
 	    display: initial;
 }
-.year-2029 p{
+.year.bad .year-2029 p{
 
 	font-size: 28pt;
 	font-weight: bold;	
 }
-.year-2029 h5{
+.year.bad .year-2029 h5{
 
 	font-size: 29pt;
 	font-weight: bold;	
 }
-.year-2029 h4{
+.year.bad .year-2029 h4{
 
 	font-size: 40pt;
 	font-weight: bold;	
 }
 
-.year-2029 .row:not(.expanded)  .footer{
+.year.bad .year-2029 .row-1:not(.expanded)  .footer{
 	top:20px;
 }
-.year-2029 .footer{
+.year.bad .year-2029 .footer{
 
 font-size:18pt;
 	font-family:ambivalentiTzarRegular;	
@@ -72,7 +72,7 @@ font-size:18pt;
 	margin-left:190px;
 }
 
-.year-2029 .row-1 h1{
+.year.bad .year-2029 .row-1 h1{
 	
 	font-size:137pt;
 	line-height: 155pt;
@@ -81,7 +81,7 @@ font-size:18pt;
 	margin:20px 0 0 0;
 	
 }
-.year-2029 .row h2{
+.year.bad .year-2029 .row h2{
 	
 	font-size:45pt;
 	letter-spacing: 4px;	
@@ -90,17 +90,17 @@ font-size:18pt;
 	line-height: 45pt;
 	
 }
-.year-2029 .row h4{
+.year.bad .year-2029 .row h4{
 
 	font-weight: bold;	
 }
-.year-2029 .row h4, .year-2029 .row h3{
+.year.bad .year-2029 .row h4, .year-2029 .row h3{
 	
 	font-size:29px;
 	font-family:ambivalentiTzarRegular;
 	margin:20px auto 30px auto;
 }
- .year-2029:not(.expanded) .row h3, .year-2029:not(.expanded) h4{
+ .year.bad .year-2029:not(.expanded) .row h3, .year-2029:not(.expanded) h4{
 
 	margin-top:50px;
 	margin-bottom:20px;
@@ -108,29 +108,29 @@ font-size:18pt;
 	font-weight: normal;	
 }
 
-.year-2029:not(.expanded) h4{
+.year.bad .year-2029:not(.expanded) h4{
 	
 	font-weight: bolder;
 }
 
-.year-2029.expanded .row-1 p{
+.year.bad .year-2029.expanded .row-1 p{
 	
 	font-size: 28pt;
 	line-height: 40pt;	
 } 
-.year-2029.expanded .row h4{
+.year.bad .year-2029.expanded .row h4{
 	
 	font-size:29px;
 	font-weight: bolder;
 	line-height: 40pt;		
 }
-.year-2029.expanded .row h5{
+.year.bad .year-2029.expanded .row h5{
 	
 	font-size: 40pt;
 	font-weight: 100;
 	line-height: 45pt;
 }
-.year-2029.expanded .row h4, .year-2029.expanded .row h5{
+.year.bad .year-2029.expanded .row h4, .year-2029.expanded .row h5{
 	
 	
 	font-family:ambivalentiTzarRegular;
@@ -168,17 +168,17 @@ h5{
 	font-size: 18pt;
 }
 
-.year-2036 .row.expanded .box:nth-child(1) p{
+.year.bad .year-2036 .row.expanded .box:nth-child(1) p{
 	
 	    line-height: 52px;
 }
-.year-2036 .row .box:nth-child(2) h2{
+.year.bad .year-2036 .row .box:nth-child(2) h2{
 	
 	background: url('../img/2036-div-border.png') repeat-y right;	
 	    padding-right: 70px;
 	    margin-right: 0;
 }
-.year-2036{
+.year.bad .year-2036{
 	
 	background-color:#e4e4e4;
 	background-image: url('../img/dots-background.png');
@@ -372,3 +372,116 @@ h5{
 	font-size:41pt;
 	line-height: 60pt;	
 }
+
+/**
+ * 	good - 2024
+ * 
+ */
+.year.good .year-2024 {
+	
+	background: #ffd2d0;
+	font-family: almoniDLBold;
+}
+.year.good .year-2024 h1{
+	
+	font-size:73pt;
+	line-height: 47pt;	
+}
+.year.good .year-2024 h2{
+	
+	font-size:33pt;
+	line-height: 42pt;	
+	font-family: barLev;
+}
+.year.good .year-2024 h3{
+	
+	font-size:44pt;
+	line-height: 60pt;	
+}
+.year.good .year-2024 h4{
+	
+	font-size:30pt;
+	line-height: 36pt;	
+	font-family: barLev;
+}
+.year.good .year-2024 h5{
+	
+	font-size:23pt;
+	line-height: 40pt;
+	font-family: almoniDL;	
+}
+.year.good .year-2024 h6{
+	
+	font-size:24pt;
+	line-height: 33pt;	
+	font-family: ambivalentiTzarRegular;
+}
+
+/**
+ * 	good - 2029
+ * 
+ */
+.year.good .year-2029 {
+
+	background: #fcc7c5;
+	font-family: ambivalentiTzarRegular;	
+}
+.year.good .year-2029 h1{
+	
+	font-size:65pt;
+	line-height: 55pt;	
+	font-family: ambivalentiTzarRegular;
+}
+.year.good .year-2029 h2{
+	
+	font-size:32pt;
+	line-height: 45pt;	
+}
+.year.good .year-2029 h3{
+	
+	font-size:100pt;
+	line-height: 95pt;	
+}
+.year.good .year-2029 h4{
+	
+	font-size:30pt;
+	line-height: 42pt;	
+	font-family: almoniDL;
+}
+.year.good .year-2029 h5{
+	
+	font-size:30pt;
+	line-height: 42pt;	
+	font-family: almoniDL;
+	font-weight: bold;
+	
+}
+
+/**
+ * 	good - 2036
+ */
+.year.good .year-2036 {
+	
+	background: #ffbdbb;
+	font-family: ambivalentiTzarRegular;
+}
+.year.good .year-2036 h1{
+	
+	font-size: 45pt;
+	line-height: 50pt;	
+	font-family: almoniDL;
+}
+.year.good .year-2036 h2, .year.good .year-2036 h3{
+	
+	font-size: 24pt;
+	line-height: 32pt;	
+	font-family: almoniDL;
+}
+.year.good .year-2036 h4{
+	
+	font-size: 40pt;
+	line-height: 42pt;	
+	font-family: almoniDL;
+}
+
+

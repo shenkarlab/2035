@@ -1,4 +1,4 @@
-app.controller("chartController", ["$scope", "$sce", function($scope, $sce){
+app.controller("chartController", ["$scope", "$sce", "$rootScope", function($scope, $sce, $rootScope){
 	
 	var loaded = false;
 	
@@ -14,6 +14,9 @@ app.controller("chartController", ["$scope", "$sce", function($scope, $sce){
 	
 	$scope.init = function(divId, box, year){
 		
+		if($scope.id == undefined)
+			$scope.id = $rootScope.chartIdCounter = ($rootScope.chartIdCounter==undefined) ? 1 : $rootScope.chartIdCounter+1;
+		
 		$scope.loadChart = function(){
 			if($scope.loaded) return;
 			$scope.loaded = true;
@@ -21,7 +24,8 @@ app.controller("chartController", ["$scope", "$sce", function($scope, $sce){
 			setTimeout(function(){
 				
 				d3.csv(box.csv, function(data){
-				window[box.chartType]("#box-"+box.chartType+"-"+year.year+"-"+divId,data);   
+					console.log("#box-"+box.chartType+"-"+year.year+"-"+divId+$scope.id);
+				window[box.chartType]("#box-"+box.chartType+"-"+year.year+"-"+divId+$scope.id,data);   
 			});	
 			},10);
 		};

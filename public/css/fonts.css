@@ -22,3 +22,15 @@
     font-family: shaulBold;
     src: url(../fonts/Shual-Bold.ttf);
 }
+@font-face {
+    font-family: almoniDL;
+    src: url(../fonts/almoni-dl-aaa-regular.otf);
+}
+@font-face {
+    font-family: almoniDLBold;
+    src: url(../fonts/almoni-dl-aaa-bold.otf);
+}
+@font-face {
+    font-family: barLev;
+    src: url(../fonts/barlev-aaa-regular.otf);
+}
