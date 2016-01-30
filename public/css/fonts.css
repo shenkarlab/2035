@@ -11,8 +11,20 @@
     src: url(../fonts/ambivalenti-tzar-aaa-regular.otf);
 }
 @font-face {
+    font-family: ambivalentiTzarLight;
+    src: url(../fonts/ambivalenti-tzar-aaa-light.otf);
+}
+@font-face {
     font-family: almoniTzar;
     src: url(../fonts/almoni-tzar-aaa-regular.otf);
+}
+@font-face {
+    font-family: almoniTzarBold;
+    src: url(../fonts/almoni-tzar-aaa-bold.otf);
+}
+@font-face {
+    font-family: almoniTzarLight;
+    src: url(../fonts/almoni-tzar-aaa-light.otf);
 }
 @font-face {
     font-family: shaulRegular;
@@ -33,4 +45,8 @@
 @font-face {
     font-family: barLev;
     src: url(../fonts/barlev-aaa-regular.otf);
+}
+@font-face {
+    font-family: barLevBold;
+    src: url(../fonts/barlev-aaa-bold.otf);
 }

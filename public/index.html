@@ -30,7 +30,7 @@
 	<body ng-app="IL2036" ng-controller="mainAppController" ng-switch="stage" class="{{stage}}" >
 		
 		<div class="header" ng-class="stage" >
-			<h3 class="calc"  >כלכליסט</h3><h3 ng-show="stage=='timeline' || stage=='goodtimeline'" >{{lastScrolledYear}}</h3> 
+			<h3 class="calc"  >כלכליסט</h3><h3 ng-show="stage=='timeline' || stage=='goodtimeline'" >{{displayYear}}</h3> 
 			<div  id="mainGraph" ng-show="stage=='timeline' || stage=='goodtimeline'" ></div>
 		</div>
 		
@@ -56,7 +56,7 @@
 					
 				</div>
 				<div class="footer-button" ng-click="nextIntroFrame()" >
-						<img src="img/intro-arrow.jpg" />
+						<div class="arrow" ></div>
 					</div>
 			</div>	
 				
@@ -88,7 +88,7 @@
 				
 				</div>
 				<div class="footer-button" ng-click="nextIntroFrame()" >
-					<img src="img/intro-arrow.jpg" />
+					<div class="arrow" ></div>
 				</div>
 			</div>
 			
@@ -104,7 +104,7 @@
 					
 				</div>
 				<div class="footer-button" ng-click="nextIntroFrame()" >
-						<img src="img/white-intro-arrow.jpg" />
+						<div class="arrow" ></div>
 					</div>
 			</div>
 
@@ -130,13 +130,13 @@
 						</p>
 						</div>
 						<div class="footer-button" ng-click="flipToGood()" >
-							<img src="img/intro-arrow.jpg" />
+							<div class="arrow" ></div>
 						</div>
 					</div>
 				</div>
 				
 				<div class="back" ng-show="stage=='goodtimeline'" ng-init="senario='bad'">
-					<div class="year good" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.good" >
+					<div class="year good" ng-include="'views/yearDisplay.html'" ng-repeat="year in goodYears" year="{{year.year}}" ng-scroll-into="yearScrolledInto">
 					</div>
 					
 					<div class="intro-screen rel finish" >

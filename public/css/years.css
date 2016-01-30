@@ -21,6 +21,11 @@
     padding: 0;
 }
 
+.year.bad .year-2036 .row-1 .i1 img{
+	
+	margin:50px auto;
+}
+
 .year.bad .year-2029{
 	
 	font-family:ambivalentiTzarRegular;	
@@ -36,7 +41,6 @@
 }
 .year.bad .year-2029 .footer ul{
 
-	left:160px;	
 }
 .year.bad b{
 
@@ -68,8 +72,6 @@
 font-size:18pt;
 	font-family:ambivalentiTzarRegular;	
 	
-	right:160px;
-	margin-left:190px;
 }
 
 .year.bad .year-2029 .row-1 h1{
@@ -96,7 +98,7 @@ font-size:18pt;
 }
 .year.bad .year-2029 .row h4, .year-2029 .row h3{
 	
-	font-size:29px;
+	font-size:40pt;
 	font-family:ambivalentiTzarRegular;
 	margin:20px auto 30px auto;
 }
@@ -173,14 +175,14 @@ h5{
 	    line-height: 52px;
 }
 
-@media screen (min-width:500px){
-.year.bad .year-2036 .row .box:nth-child(2) h2{
-	
-	background: url('../img/2036-div-border.png') repeat-y right;	
-	    padding-right: 70px;
-	    margin-right: 0;
-}
-}
+
+	.year.bad .year-2036 .row .box:nth-child(2) h2{
+		
+		background: url('../img/2036-div-border.png') no-repeat top right;	
+		    padding-right: 70px;
+		    margin-right: 0;
+	}
+
 .year.bad .year-2036{
 	
 	background-color:#e4e4e4;
@@ -197,6 +199,7 @@ h5{
 	
 	background: #f7f7f7;
 	font-family: ambivalentiTzarRegular;
+	text-align: right;
 }
 .year.bad .year-2024 h1{
 	
@@ -222,6 +225,9 @@ h5{
 	margin-top:30px;
 	font-weight: bold;
 	font-size:29pt;	
+}
+.year.bad .year-2024 .footer ul{
+	background: #f7f7f7;	
 }
 .year.bad .year-2024 .footer{
 
@@ -295,6 +301,7 @@ h5{
  * 2016 - good
  * 
  */
+
 .year.good b{
 	
 	background: #fff;
@@ -305,6 +312,7 @@ h5{
 	
 	background: #eae9e4;
 	font-family:shaulRegular;
+	text-align: right;
 }
 .year.good .year-2016 h1{
 	font-size:44pt;
@@ -367,9 +375,12 @@ h5{
 }
 .year.good .year-2019 h1{
 	font-size:53pt;	
+	font-family: almoniTzarBold;
 }
 .year.good .year-2019 h2{
-	font-size:23pt;	
+	font-size:23.5pt;	
+	line-height:40pt;
+	font-family: almoniTzarLight;
 }
 .year.good .year-2019 h3{
 	font-size:41pt;
@@ -385,27 +396,37 @@ h5{
 	background: #ffd2d0;
 	font-family: almoniDLBold;
 }
+.year.good .year-2024 .footer ul{
+
+	background: #ffd2d0;	
+}
 .year.good .year-2024 h1{
 	
 	font-size:73pt;
 	line-height: 47pt;	
+	font-family: barLevBold;
+	    margin-top: 50px;
 }
 .year.good .year-2024 h2{
 	
 	font-size:33pt;
 	line-height: 42pt;	
-	font-family: barLev;
+	font-family: almoniDL;
+	
 }
 .year.good .year-2024 h3{
 	
 	font-size:44pt;
 	line-height: 60pt;	
+	font-family: barLevBold;
+	    margin-top: 20px;
 }
 .year.good .year-2024 h4{
 	
 	font-size:30pt;
 	line-height: 36pt;	
 	font-family: barLev;
+	font-family: almoniDL;
 }
 .year.good .year-2024 h5{
 	
@@ -428,6 +449,7 @@ h5{
 
 	background: #fcc7c5;
 	font-family: ambivalentiTzarRegular;	
+	text-align: right;
 }
 .year.good .year-2029 h1{
 	
@@ -472,7 +494,8 @@ h5{
 	
 	font-size: 45pt;
 	line-height: 50pt;	
-	font-family: almoniDL;
+	font-family: ambivalentiTzarLight;
+	margin-top:50px;
 }
 .year.good .year-2036 h2, .year.good .year-2036 h3{
 	

@@ -2,7 +2,7 @@ function checkIfElemInScreen(elem){
 	
 	//console.log(elem.getBoundingClientRect().top + "<" + window.innerHeight);
 	//console.log($(elem).offset().top);
-	//console.log(elem.getBoundingClientRect().top);	
+	console.log(elem.getBoundingClientRect().top);	
 	return (elem.getBoundingClientRect().top + 120 < window.innerHeight);
 }
 

@@ -245,13 +245,13 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 						{
 							weight:2,
 							type:"paragraph",
-							body:"<h2>שר האוצר מכריז כי הדבר עלול להביא לכך <b>שבעוד עשור לא יהיו מספיק מסים בקופת המדינה</b> (כי עובדים בשכר נמוך משלמים פחות מסים, או לא משלמים כלל) ומנסה להשיק מחדש את התוכנית להכנסת לימודי הליבה אל תוך מערכת החינוך החרדי., במקביל הוא מקדם תוספות תקציב למגזר הערבי לטובת שיפור רמת ההשכלה ושיפור רמת התשתיות הציבוריות (מעונות יום לנשים, תחבורה ציבורית ועוד).<br/>בתגובה, חברי כנסת מהימין תוקפים אותו על כך שהוא בוגד ברוב היהודי במדינת ישראל ומפלה לטובה את המגזר הערבי, וחברי כנסת חרדים מאיימים במשבר קואליציוני ובפירוק הממשלה. בתוך שלושה ימים ראש הממשלה מורה לשר האוצר <b>לגנוז את התוכניות ואף מבטל את תוכנית התקצוב</b> הדיפרנציאלי למערכת החינוך הערבית שהתחילה חמש שנים קודם לכן.</h2>"
+							body:"<h2>שר האוצר מכריז כי הדבר עלול להביא לכך <b>שבעוד עשור לא יהיו מספיק מסים בקופת המדינה</b> (כי עובדים בשכר נמוך משלמים פחות מסים, או לא משלמים כלל) ומנסה להשיק מחדש את התוכנית להכנסת לימודי הליבה אל תוך מערכת החינוך החרדי., במקביל הוא מקדם תוספות תקציב למגזר הערבי לטובת שיפור רמת ההשכלה ושיפור רמת התשתיות הציבוריות (מעונות יום לנשים, תחבורה ציבורית ועוד).בתגובה, חברי כנסת מהימין תוקפים אותו על כך שהוא בוגד ברוב היהודי במדינת ישראל ומפלה לטובה את המגזר הערבי, וחברי כנסת חרדים מאיימים במשבר קואליציוני ובפירוק הממשלה. בתוך שלושה ימים ראש הממשלה מורה לשר האוצר <b>לגנוז את התוכניות ואף מבטל את תוכנית התקצוב</b> הדיפרנציאלי למערכת החינוך הערבית שהתחילה חמש שנים קודם לכן.</h2>"
 							,category:"כספים", date:"12 בינואר",
 						},
 						{
 							weight:2,
 							type:"chart",
-							chartType:"PopulationLineChart",
+							chartType:"SunChart",
 							csv:"populationGroth.csv"
 						}
 					]
@@ -406,7 +406,7 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 							type:"paragraph",
 							weight:2,
 							title:"<h1>ההשקעה במגזרים החרדי הערבי מתחיל להניב פרי: עלייה בקצב ההצטרפות לשוק העבודה</h1>",
-							body:"<h2>גורמים חרדיים מבקשים להקים מתנ״סים נוספים ללימוד מחשבים ומדעים. צוות יישום </h2>",
+							body:"<h2>גורמים חרדיים מבקשים להקים מתנ״סים נוספים ללימוד מחשבים ומדעים. צוות יישום התוכנית הלאומית להתמודדות עם השינויים הדמוגרפיים מציין כי יש להסיט תקציבים נוספים לעידוד יזמות והקמת חממות הייטק </h2>",
 							date:"3 באפריל",
 							category:"כלכלה",
 						},
@@ -417,6 +417,7 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 							chartType:"SunChart"
 						},
 						{
+							weight:1,
 							type:"paragraph",
 							title:"<h3>בדרך ל-69: גיל הפרישה לנשים הועלה ל-65, גיל הפרישה לגברים הועלה ל-68</h3>",
 							date:"15 בפברואר",
@@ -472,8 +473,8 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 						{
 							weight:1,
 							type:"paragraph",
-							title:"<h3>האם התוכנית הלאומית להתמודדות עם השינויים הדמוגרפיים תוארך לעשור נוסף</h3>",
-							body:"<h4>?הצוות ליישום התוכנית מבקש 30 מיליארד שקל נוספים להשקעה במגזרים החרדי והערבי</h4>",
+							title:"<h3>האם התוכנית הלאומית להתמודדות עם השינויים הדמוגרפיים תוארך לעשור נוסף?</h3>",
+							body:"<h4>הצוות ליישום התוכנית מבקש 30 מיליארד שקל נוספים להשקעה במגזרים החרדי והערבי</h4>",
 							date:"2 בספטמבר",
 							category:"דמוגרפיה",
 						},
@@ -659,12 +660,14 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 		$scope.stage = "goodtimeline";
 		$scope.showTransFrame = false;
 		$scope.senario = "good";
+		$scope.goodYears = $scope.years.good;
+		$scope.displayYear = 2016;
 	};
 	
 	$scope.startTimeline = function(){
 		
 		$scope.stage = 'timeline';
-			$("body").scrollTop(10);
+			$("body").scrollTop(0);
 			$rootScope.setYearIndex(0);	
 			
 			// setup main graph
@@ -711,8 +714,6 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 				$scope.showTransFrame = true;
 			}
 			
-			if(window.mainChart != undefined)
-				window.mainChart.update(y);
 			$scope.lastScrolledYear = y;
 			
 			$scope.shrinkFont(y);
@@ -720,14 +721,19 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 		
 		if(y > $scope.lastScrolledYear && $scope.senario == "good"){
 			
-			if(window.mainChart != undefined)
-				window.mainChart.update(y);
 			$scope.lastScrolledYear = y;
 			
 			$scope.shrinkFont(y);
 		}
 		
+		if(y != $scope.lastScrolledYear){
+			
+			
+			if(window.mainChart != undefined)
+				window.mainChart.update(y);
+		}
 		
+		$scope.displayYear = y;
 		
 	};
 	

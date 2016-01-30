@@ -205,9 +205,9 @@ p{
 	font-size:35px;
 }
 
-h2,p{
+.year .row .box .chart{
 	
-	margin:2%;
+	font-family: almoniDL !important;
 }
 
 .box{
@@ -278,6 +278,19 @@ h2,p{
 	margin:10px 0;
 	padding:0 5px;
 	
+}
+
+.arrow{
+	
+	width:100px;
+	height:100px;
+	background: url("../img/intro-arrow.jpg") no-repeat center;
+	display:block;
+	margin:auto;
+}
+.arrow:hover{
+	
+	background: url("../img/white-intro-arrow.jpg") no-repeat center;
 }
 
 .more{
