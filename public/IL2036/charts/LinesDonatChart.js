@@ -126,7 +126,7 @@ function LineDonatChart(id, data){
             places[i][7] = center[1];	
 			}
 			else if(i == 2){
-			places[i][6] = center[0];
+			places[i][6] = -0.12 * pieWidth;
             places[i][7] = center[1];	
 			}
 			else if(i == 3){
@@ -146,11 +146,11 @@ function LineDonatChart(id, data){
 		}
 		
        else if(pieWidth >= 600){
-		var places = [[-0.35 * minSqareVal, 0.31 * minSqareVal, -0.40 * minSqareVal, 0.3135 * minSqareVal, -0.3 * minSqareVal, 0.3125 * minSqareVal]
-		, [0.40 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.187 * minSqareVal, 0.3125 * minSqareVal]
-		, [-0.35 * minSqareVal, -0.415 * minSqareVal, -0.40 * minSqareVal, -0.4125 * minSqareVal, -0.25 * minSqareVal, -0.4125 * minSqareVal]
-		, [0.40 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
-		, [-0.35 * minSqareVal, -0.305 * minSqareVal, -0.40 * minSqareVal, -0.3025 * minSqareVal, -0.3 * minSqareVal, -0.3025 * minSqareVal]];
+		var places = [[-0.40 * minSqareVal, 0.31 * minSqareVal, -0.40 * minSqareVal, 0.3135 * minSqareVal, -0.35 * minSqareVal, 0.3125 * minSqareVal]
+		, [0.45 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.287 * minSqareVal, 0.3125 * minSqareVal]
+		, [-0.4 * minSqareVal, -0.415 * minSqareVal, -0.40 * minSqareVal, -0.4125 * minSqareVal, -0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [0.52 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [-0.4 * minSqareVal, -0.305 * minSqareVal, -0.40 * minSqareVal, -0.3025 * minSqareVal, -0.35 * minSqareVal, -0.3025 * minSqareVal]];
         var textBox2
 		 = arcs.append("text").text(function(d, i){
             return innerData[i].publicName;
@@ -165,7 +165,7 @@ function LineDonatChart(id, data){
             places[i][7] = center[1];	
 			}
 			else if(i == 2){
-			places[i][6] = center[0];
+			places[i][6] = -0.18 * pieWidth;
             places[i][7] = center[1];	
 			}
 			else if(i == 3){
@@ -205,7 +205,7 @@ function LineDonatChart(id, data){
             places[i][7] = center[1];	
 			}
 			else if(i == 2){
-			places[i][6] = center[0];
+			places[i][6] = -0.12 * pieWidth;
             places[i][7] = center[1];	
 			}
 			else if(i == 3){
