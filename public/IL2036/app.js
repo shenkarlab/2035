@@ -252,7 +252,7 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 							weight:2,
 							type:"chart",
 							chartType:"SunChart",
-							csv:"populationGroth.csv"
+							csv:"enployment.csv"
 						}
 					]
 					
@@ -768,6 +768,7 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 	};
 	$(document).ready(function(){
 		
+		$("#transitionLayer").height(screen.height);
 			
 	});
 	
