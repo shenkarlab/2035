@@ -53,7 +53,7 @@ function PopulationLineChart(id, data){
     
     
     //Make Groupes and SVGs
-	div.attr("width", svgWidth).attr("height", svgHeight);
+//	div.attr("width", svgWidth).attr("height", svgHeight);
     var group = div.append("g").attr("width", svgWidth).attr("height", svgHeight);
     var sideText = legend(data);
     var svg = group.append("svg").attr("width", chartWidth).attr("height", chartHeight);
