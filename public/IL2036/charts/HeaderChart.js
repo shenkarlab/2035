@@ -58,12 +58,12 @@ function HeaderChart(id, data, year){
     
     
     var jewText = jewGruop.append("text").text(function(d){
-        return helper.getInLargeMilions(activeJewNumber) + "  מיליון אחרים  ";
+        return helper.getInLargeMilions(activeJewNumber) + "  מיליון יהודים והשאר  ";
     }).attr("y", 15).attr("font-size", function(){
         return "20px";
     }).attr("x", function(){
         return jewPart * 0.5;
-    });
+    }).style('fill', "white");
     
     var arabText = arabGruop.append("text").text(function(d){
         return helper.getInLargeMilions(activeArabNumber) + "  מיליון ערבים  ";
@@ -79,7 +79,7 @@ function HeaderChart(id, data, year){
         return "20px";
     }).attr("x", function(){
         return ordodoxStart + (ortodoxPart * 0.7);
-    });
+    }).style('fill', "white");
     
     
     header.update = function(newYear){
@@ -108,7 +108,7 @@ function HeaderChart(id, data, year){
         if (newYearID < data.length) {
             jewText.transition().duration(1000).attr("x", function(){
                 return (newJewPart * 0.5);
-            }).text(helper.getInLargeMilions(activeJewNumber) + "  מיליון אחרים  ");
+            }).text(helper.getInLargeMilions(activeJewNumber) +  "  מיליון יהודים והשאר  ");
             arabText.transition().duration(1000).attr("x", function(){
                 return newArabStart + (newArabPart * 0.6);
             }).text(helper.getInLargeMilions(activeArabNumber) + "  מיליון ערבים  ");
