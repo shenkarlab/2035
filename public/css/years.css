@@ -26,6 +26,17 @@
 	margin:50px auto;
 }
 
+.hlink{
+	
+	text-decoration: underline;
+	color:#000;
+	cursor: pointer;
+}
+.hlink:hover{
+	
+	color:#fff;
+}
+
 .year.bad .year-2029{
 	
 	font-family:ambivalentiTzarRegular;	

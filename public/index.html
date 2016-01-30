@@ -45,7 +45,7 @@
 		
 						<br/>
 						<br/>
-						<span class="underline" >
+						<span class="underline hlink" ng-click="nextIntroFrame()" >
 							הראו לי את העתיד
 						</span>
 						<br/>
@@ -55,9 +55,7 @@
 					</p>
 					
 				</div>
-				<div class="footer-button" ng-click="nextIntroFrame()" >
-						<div class="arrow" ></div>
-					</div>
+				
 			</div>	
 				
 			<div ng-switch-when="1" >
@@ -99,7 +97,7 @@
 					<p>
 						אם כל השינויים הדמוגרפיים שצפויים להתרחש אכן יתרחשו, ומבלי שהמדינה תעשה דבר.
 	הוא מבוסס על סקירה של המועצה הלאומית לכלכלה, על תחזיות הלשכה המרכזית לסטטיסטיקה, על האומדנים של הביטוח הלאומי ועל שני מחקרים של משרד האוצר. לא המצאנו כלום, כל המספרים על השולחן וידועים מזה כמה שנים טובות לכל מקבלי ההחלטות. רק לפני שנתיים, מייד לאחר הבחירות הקודמות, שמעו שרי הממשלה החדשים סקירה דומה מפי יו״ר המועצה הלאומית לכלכלה שנתן להם הצצה לעשרים שנה קדימה.
-					</p>
+					</p><br/></br>
 					<h2>אבל יש מה לעשות</h2>
 					
 				</div>
@@ -119,7 +117,7 @@
 						</div>
 					</div>
 					
-					<div class="intro-screen trans" ng-show="showTransFrame" ng-scroll-into="enteredTransFrame"  >
+					<div id="transitionLayer" >
 						
 						<div class="frame" >
 						<p>
@@ -128,10 +126,11 @@
 ולהוציא לדרך תוכנית להתמודדות עם השינויים הדמוגרפיים.
 
 						</p>
-						</div>
 						<div class="footer-button" ng-click="flipToGood()" >
 							<div class="arrow" ></div>
 						</div>
+						</div>
+						
 					</div>
 				</div>
 				
@@ -154,7 +153,7 @@
 
 עכשיו.
 <br/><br/>
-<u class="light" ><a target="_blank" href="http://www.facebook.com/sharer.php?external=true&u={{getSiteLink()}}" >שתף את הפרוייקט</a></u>
+<u class="hlink" ><a target="_blank" href="http://www.facebook.com/sharer.php?external=true&u={{getSiteLink()}}" >שתף את הפרוייקט</a></u>
 
 
 						</p>

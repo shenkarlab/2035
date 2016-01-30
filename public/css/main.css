@@ -151,12 +151,12 @@ body{
 }
 .header h3.calc{
 
-	font-family: mugrabiRegular;
+	font-family: almoniDL;
 	font-size: 33pt;
 }
 .goodtimeline .header h3.calc{
 
-	font-family: shaulRegular;
+	font-family: almoniDL;
 	font-size: 33pt;
 	color:white;
 	background: #2f61b4;
@@ -319,7 +319,7 @@ p{
 	right:0;
 	bottom:0;	
 }
-.intro-screen{
+.intro-screen, #transitionLayer{
 	
 	background-color: #ffbdbb;
 	font-size: 17pt;
@@ -398,7 +398,16 @@ body.switchTimeline .intro-screen.trans{
     display: none; 
 }
 
-.intro-screen p{
+#transitionLayer {
+
+	    display: flex;	
+}
+#transitionLayer p{
+	
+	margin:200px auto;
+}
+
+.intro-screen p, #transitionLayer p{
 	
 	font-size: 16pt;
 	font-family: shaulRegular;	
@@ -427,7 +436,7 @@ body.switchTimeline .intro-screen.trans{
 	text-decoration: underline;
 }
 
-.intro-screen p b, .intro-screen h2{
+.intro-screen p b, #transitionLayer p b, .intro-screen h2{
 	
 	font-weight:inherit;
 	background-color: #fff;
