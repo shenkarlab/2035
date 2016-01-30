@@ -251,7 +251,6 @@ function ChartHelper(){
     
     
     
-    
     return helper;
     
 }
