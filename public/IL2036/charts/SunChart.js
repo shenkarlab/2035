@@ -9,7 +9,7 @@ function SunChart(id, data){
 
     var isDoneToMake = false;
     var div = d3.select(id);
-	console.log("id : " + id);
+
      var svgHeight  = 593;
 //	var svgWidth  = 967;
   //  var svgHeight  = parseInt($(id)[0].offsetHeight,10);
