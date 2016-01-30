@@ -21,11 +21,11 @@
 
 <div ng-switch-when="image" >
 	<img  src="{{box.src}}" />
-	<div class="footer" >
+	<div class="footer" ng-show="box.date!=undefined" >
 		<ul>
 			<li>{{box.date}}</li>
 			<li>{{box.category}}</li>
-			<li>שתף</li>
+			<li><a target="_blank" href="http://www.facebook.com/sharer.php?external=true&u={{getSiteLink()}}?year={{year.year}}" ></a>שתף</li>
 		</ul>
 	</div>
 </div>
@@ -33,6 +33,6 @@
 	<img  src="{{box.src}}" />
 </div>
 		
-<div ng-switch-when="chart" ng-controller="chartController" ng-attr-id="box-{{box.chartType}}-{{year.year}}-{{$index}}" class="chart" ng-init="init($index+more, box, year)" ng-scroll-into="loadChart" >
+<div ng-switch-when="chart" ng-controller="chartController" ng-attr-id="box-{{box.chartType}}-{{year.year}}-{{$index}}{{id}}" class="chart" ng-init="init($index, box, year)" ng-scroll-into="loadChart" >
 	
 </div>

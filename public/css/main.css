@@ -151,7 +151,19 @@ body{
 .header h3.calc{
 
 	font-family: mugrabiRegular;
-	font-size: 36pt;
+	font-size: 33pt;
+}
+.goodtimeline .header h3.calc{
+
+	font-family: shaulRegular;
+	font-size: 33pt;
+	color:white;
+	background: #2f61b4;
+}
+.goodtimeline .header h3{
+
+	font-family: shaulRegular;
+	color: #2f61b4;
 }
 
 .box{
@@ -233,6 +245,7 @@ h2,p{
 .box.b1 .footer{
 	
 	border-bottom:solid 1px #000;	
+	font-family:shaulRegular !important;
 }
 .footer{
 	
@@ -306,6 +319,18 @@ h2,p{
 .intro-screen.trans .frame{
 	position: relative;	
 }
+
+.intro-screen.finish{
+	
+	padding:200px 0;
+}
+
+a{
+	
+	color:inherit;
+	text-decoration: inherit;
+}
+
 .intro-screen.trans{
 	
 	height:500px;
@@ -445,6 +470,13 @@ body.switchTimeline .intro-screen.trans{
 /**
  * 	mobile design
  */
+@media screen and (min-height:800px){
+
+	.frame{
+		
+		padding-top:100px;
+	}	
+}
 @media screen and (max-width:800px){
 
 	.frame{

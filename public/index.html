@@ -114,8 +114,8 @@
 			<div class="flipper">
 				<div class="front" >
 					
-					<div id="badTimeline" ng-show="stage=='timeline' || showTransFrame" >
-						<div class="year good" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.good track by $index" year="{{year.year}}" ng-scroll-into="yearScrolledInto" ng-init="yearLoaded($index)" >
+					<div id="badTimeline" ng-show="stage!='goodtimeline'" ng-init="senario='bad'" >
+						<div class="year bad" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.bad track by $index" year="{{year.year}}" ng-scroll-into="yearScrolledInto" ng-init="yearLoaded($index)" >
 						</div>
 					</div>
 					
@@ -135,11 +135,11 @@
 					</div>
 				</div>
 				
-				<div class="back" ng-show="stage=='goodtimeline'">
+				<div class="back" ng-show="stage=='goodtimeline'" ng-init="senario='bad'">
 					<div class="year good" ng-include="'views/yearDisplay.html'" ng-repeat="year in years.good" >
 					</div>
 					
-					<div class="intro-screen rel" >
+					<div class="intro-screen rel finish" >
 						
 						<div class="frame" >
 						<p>
@@ -154,7 +154,7 @@
 
 עכשיו.
 <br/><br/>
-<u class="light" >שתף את הפרוייקט</u>
+<u class="light" ><a target="_blank" href="http://www.facebook.com/sharer.php?external=true&u={{getSiteLink()}}" >שתף את הפרוייקט</a></u>
 
 
 						</p>
