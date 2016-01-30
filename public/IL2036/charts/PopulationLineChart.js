@@ -53,7 +53,7 @@ function PopulationLineChart(id, data){
     
     
     //Make Groupes and SVGs
-	div.attr("width", svgWidth).attr("height", svgHeight);
+	//div.attr("width", svgWidth).attr("height", svgHeight);
     var group = div.append("g").attr("width", svgWidth).attr("height", svgHeight);
     var sideText = legend(data);
     var svg = group.append("svg").attr("width", chartWidth).attr("height", chartHeight);
@@ -63,13 +63,13 @@ function PopulationLineChart(id, data){
     //Make Axis Acording to Scales
     var widthAxis = d3.svg.axis().scale(widthScale).orient("bottom").tickSize(0, 1);
 
-    var axisx = svg.append("g").attr("class", "x-axis").attr("transform", "translate(" + 0 + "," + (chartHeight - botPadding) + ")").attr("font-size", "10px").call(widthAxis);
+    var axisx = svg.append("g").attr("class", "x-axis").attr("transform", "translate(" + 0 + "," + (chartHeight - botPadding) + ")").attr("font-size", "10px").call(widthAxis).style("font-size","30px");
     
     var heightAxis = d3.svg.axis().scale(heightScale).orient("right").ticks(10).tickSize(0, 0).tickFormat(function(d){
-        return (Math.round((d) / 100000) / 10) + "M";
+        return  " Mil " + (Math.round((d) / 100000) / 10);
     });
     
-    var axisY = svg.append("g").attr("transform", "translate(" + paddingLeft + "," + 0 + ")").call(heightAxis);
+    var axisY = svg.append("g").attr("transform", "translate(" + (paddingLeft * 0.7) + "," + 0 + ")").call(heightAxis).style("font-size","35px");
     
   
     
@@ -87,8 +87,8 @@ function PopulationLineChart(id, data){
         return "Year " + d.year + " The Jew Populatoin: " + helper.getInMilions(d.jewTotal) + " Mil";
     })
     
-    jewRects.transition().delay(1800).duration(function(d){
-        return 1000;
+    jewRects.transition().delay(1000).duration(function(d){
+        return 500;
     }).attr("height", function(d){
         return chartHeight - heightScale(d.jewTotal) - (botPadding);
     }).each("end", endPainiting);
@@ -106,8 +106,8 @@ function PopulationLineChart(id, data){
     arabRects.append("title").text(function(d){
         return "Year " + d.year + " The Arab Populatoin: " +helper.getInMilions(d.arabTotal) + " Mil";
     });
-    arabRects.transition().delay(800).duration(function(d){
-        return 1000;
+    arabRects.transition().delay(500).duration(function(d){
+        return 500;
     }).attr("height", function(d){
         return chartHeight - heightScale(d.arabTotal) - (botPadding);
     });
@@ -126,10 +126,41 @@ function PopulationLineChart(id, data){
     });
     
     ortodoxRects.transition().delay(0).duration(function(d){
-        return 1000;
+        return 500;
     }).attr("height", function(d){
         return chartHeight - heightScale(d.ultraOrthodoxTotal) - (botPadding);
     });
+	
+	   var yearSelectorSvg = svg.append("g");
+	  var headText = yearSelectorSvg.append("text").text(function(d){
+            return "אוכלוסיה בישראל לפי מגזרים";
+        })
+		.attr("y",function(){
+			return (0.1 * chartHeight);	
+		})
+		.attr("font-size", function(){
+			if(chartWidth >= 800){
+				return "55px";
+			}else if(chartWidth >= 400){
+				return "45px";
+			}else{
+				return "28px";
+			}
+			
+		}).attr("x", function(){
+			if (chartWidth >= 800) {
+				return (0.8 * chartWidth);
+			}else if(chartWidth >= 400){
+				return (0.8 * chartWidth);
+			}
+			else{
+				return (0.8 * chartWidth);
+				
+			}
+			
+		   
+		});
+        
     
     /// Interaction Functions
     function endPainiting(){
@@ -203,8 +234,7 @@ function PopulationLineChart(id, data){
 		
         // create table for legend.
         var legend = group.append("table").attr("width", mapWidth).attr("height",mapHeight)
-		.style("transform","translate(" + translateWidth + ",20%)")
-		.attr('class', 'legend');
+		.style("transform","translate(" + 0 + ",30%)").attr('class', 'legend');
         
         // create one row per segment.
         var tr = legend.append("tbody").selectAll("tr").data(legData).enter().append("tr");
