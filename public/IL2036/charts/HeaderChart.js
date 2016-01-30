@@ -2,7 +2,7 @@
 
 function HeaderChart(id, data, year){
     if (year == null) {
-        year = 2009;
+        year = 2024;
     }
     
     var header = {};
@@ -81,43 +81,61 @@ function HeaderChart(id, data, year){
         return ordodoxStart + (ortodoxPart * 0.7);
     }).style('fill', "white");
     
-    
+    var newMaxPopulationVal = MaxPopulationVal;
     header.update = function(newYear){
         var newYearID = helper.GetYearID(newYear, data);
-        var newMaxPopulationVal = helper.GetMaxPopulation(data, newYearID);
+         newMaxPopulationVal = helper.GetMaxPopulation(data, newYearID);
         
         
         activeJewNumber = (data[newYearID].jewTotal);
         var newJewPart = ((activeJewNumber / newMaxPopulationVal) * svgWidth) - padding;
-        jewRect.transition().delay(500).attr("width", newJewPart).attr("height", svgHeight).attr('y', 0).attr("x", 0).attr("fill", function(d){
+        jewRect.transition().duration(500).attr("width", newJewPart).attr("height", svgHeight).attr('y', 0).attr("x", 0).attr("fill", function(d){
             return helper.segPopulationColor("other");
         });
         
         activeArabNumber = (data[newYearID].arabTotal);
         var newArabPart = (activeArabNumber / newMaxPopulationVal) * svgWidth;
         var newArabStart = newJewPart + padding;
-        arabRect.transition().delay(500).attr("width", newArabPart).attr("height", svgHeight).attr('y', 0).attr("x", newArabStart).attr("fill", function(d){
+        arabRect.transition().duration(500).attr("width", newArabPart).attr("height", svgHeight).attr('y', 0).attr("x", newArabStart).attr("fill", function(d){
             return helper.segPopulationColor("arab");
         });
          activeOrtodoxNumber = (data[newYearID].ultraOrthodoxTotal);
         var newOrtodoxPart = ((activeOrtodoxNumber / newMaxPopulationVal) * svgWidth) - padding;
         var newOrdodoxStart = newJewPart + newArabPart + (padding * 2);
-        ortodoxRect.transition().delay(500).attr("width", newOrtodoxPart).attr("height", svgHeight).attr('y', 0).attr("x", newOrdodoxStart).attr("fill", function(d){
+        ortodoxRect.transition().duration(500).attr("width", newOrtodoxPart).attr("height", svgHeight).attr('y', 0).attr("x", newOrdodoxStart).attr("fill", function(d){
             return helper.segPopulationColor("jew");
         });
         if (newYearID < data.length) {
-            jewText.transition().duration(1000).attr("x", function(){
+            jewText.transition().duration(500).attr("x", function(){
                 return (newJewPart * 0.5);
             }).text(helper.getInLargeMilions(activeJewNumber) +  "  מיליון יהודים והשאר  ");
-            arabText.transition().duration(1000).attr("x", function(){
+            arabText.transition().duration(500).attr("x", function(){
                 return newArabStart + (newArabPart * 0.6);
             }).text(helper.getInLargeMilions(activeArabNumber) + "  מיליון ערבים  ");
-			ortodoxText.transition().duration(1000).attr("x", function(){
+			ortodoxText.transition().duration(500).attr("x", function(){
                 return newOrdodoxStart + (newOrtodoxPart * 0.7);
             }).text(helper.getInLargeMilions(activeOrtodoxNumber) + "  מיליון חרדים  ");
         }
         
     }
+	div.on("mouseover", mouseOverHeader);
+	div.on("mouseout", mouseOutHeader);
+	    function mouseOverHeader(){
+			var jewProz = (activeJewNumber / newMaxPopulationVal) * 100;
+			jewProz = jewProz.toFixed(1);
+            jewText.transition().duration(500).text(  jewProz + "%" +  " יהודים והשאר  ");
+			var arabProz = (activeArabNumber / newMaxPopulationVal) * 100;
+			arabProz = arabProz.toFixed(1);
+            arabText.transition().duration(500).text(  arabProz + "%" +  " ערבים  ");
+			var ortodoxProz = (activeOrtodoxNumber / newMaxPopulationVal) * 100;
+			ortodoxProz = ortodoxProz.toFixed(1);
+			ortodoxText.transition().duration(500).text( ortodoxProz + "%" +  " חרדים  ");
+		 }
+		  function mouseOutHeader(){
+            jewText.transition().duration(500).text(helper.getInLargeMilions(activeJewNumber)  + " מיליון יהודים והשאר  ");
+            arabText.transition().duration(500).text(helper.getInLargeMilions(activeArabNumber) + "  מיליון ערבים  ");
+			ortodoxText.transition().duration(500).text(helper.getInLargeMilions(activeOrtodoxNumber) + "  מיליון חרדים  ");
+		 }
     
     
     
