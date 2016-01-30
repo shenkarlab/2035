@@ -5,14 +5,14 @@ function PopulationLineChart(id, data){
     var helper = ChartHelper();
     var div = d3.select(id);
     var svgHeight  = 593;
-	var svgWidth  = 967;
+//	var svgWidth  = 967;
     // var svgHeight = parseInt(div.style("height"), 10);
     // var svgWidth = parseInt(div.style("width"), 10);
   //  var svgHeight  = parseInt($(id)[0].offsetHeight,10);
-	//var svgWidth = parseInt($(id)[0].offsetWidth,10);
+	var svgWidth = parseInt($(id)[0].offsetWidth,10);
     var chartWidth = (svgWidth / 3) * 2;
     var chartHeight = svgHeight;
-    var mapWidth = (svgWidth / 3) * 1;
+    var mapWidth = ((svgWidth / 3) * 1) -10;
     var mapHeight = svgHeight;
     
     var paddingLeft = 0.15 * chartWidth;
@@ -65,7 +65,7 @@ function PopulationLineChart(id, data){
 
     var axisx = svg.append("g").attr("class", "x-axis").attr("transform", "translate(" + 0 + "," + (chartHeight - botPadding) + ")").attr("font-size", "10px").call(widthAxis);
     
-    var heightAxis = d3.svg.axis().scale(heightScale).orient("right").ticks(10).tickSize(1, 1).tickFormat(function(d){
+    var heightAxis = d3.svg.axis().scale(heightScale).orient("right").ticks(10).tickSize(0, 0).tickFormat(function(d){
         return (Math.round((d) / 100000) / 10) + "M";
     });
     

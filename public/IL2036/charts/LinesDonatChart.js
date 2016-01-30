@@ -6,11 +6,11 @@ function LineDonatChart(id, data){
     var helper = ChartHelper();
     var div = d3.select(id);
 	var svgHeight  = 593;
-	var svgWidth  = 967;
+//	var svgWidth  = 967;
    // var svgHeight = parseInt(div.style("height"), 10);
   //  var svgHeight  =  parseInt($(id)[0].offsetHeight,10);
   //  var svgWidth = parseInt(div.style("width"), 10);
-//	var svgWidth = parseInt($(id)[0].offsetWidth,10);
+	var svgWidth = parseInt($(id)[0].offsetWidth,10);
     var pieWidth = (svgWidth / 3) * 2;
     var pieHeight = svgHeight;
     var mapWidth = ((svgWidth / 3) * 1) - 10;
@@ -20,10 +20,10 @@ function LineDonatChart(id, data){
     var padding = svgWidth / 25;
     var minSqareVal = 0;
     if (pieHeight >= pieWidth) {
-        minSqareVal = pieHeight;
+        minSqareVal = pieWidth;
     }
     else {
-        minSqareVal = pieWidth;
+        minSqareVal = pieHeight;
     }
 	if(minSqareVal >= 900){
 		minSqareVal = 900;
@@ -107,11 +107,11 @@ function LineDonatChart(id, data){
         });
 		
 		if(pieWidth >= 800){
-		var places = [[-0.35 * minSqareVal, 0.31 * minSqareVal, -0.40 * minSqareVal, 0.3135 * minSqareVal, -0.3 * minSqareVal, 0.3125 * minSqareVal]
-		, [0.40 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.187 * minSqareVal, 0.3125 * minSqareVal]
-		, [-0.35 * minSqareVal, -0.415 * minSqareVal, -0.40 * minSqareVal, -0.4125 * minSqareVal, -0.25 * minSqareVal, -0.4125 * minSqareVal]
-		, [0.40 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
-		, [-0.35 * minSqareVal, -0.305 * minSqareVal, -0.40 * minSqareVal, -0.3025 * minSqareVal, -0.3 * minSqareVal, -0.3025 * minSqareVal]];
+		var places = [[-0.45 * minSqareVal, 0.31 * minSqareVal, -0.45 * minSqareVal, 0.3135 * minSqareVal, -0.35 * minSqareVal, 0.3125 * minSqareVal]
+		, [0.45 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.287 * minSqareVal, 0.3125 * minSqareVal]
+		, [-0.45 * minSqareVal, -0.415 * minSqareVal, -0.45 * minSqareVal, -0.4125 * minSqareVal, -0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [0.52 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [-0.45 * minSqareVal, -0.305 * minSqareVal, -0.45 * minSqareVal, -0.3025 * minSqareVal, -0.35 * minSqareVal, -0.3025 * minSqareVal]];
         var textBox2
 		 = arcs.append("text").text(function(d, i){
             return innerData[i].publicName;
@@ -268,7 +268,18 @@ function LineDonatChart(id, data){
         var centerText = yearSelectorSvg.append("text").text(function(d){
             return 2009;
         })
-		.attr("y", 0.5 * minSqareVal)
+		.attr("y",function(){
+			if (minSqareVal >= 800) {
+				return (0.6 * pieHeight);
+			}else if(pieHeight >= 400){
+				return (0.58 * pieHeight) ;
+			}
+			else{
+				return (0.5 * pieHeight);
+				
+			}
+			
+		})
 		.attr("font-size", function(){
 			if(pieWidth >= 400){
 				return "60px";
@@ -277,7 +288,17 @@ function LineDonatChart(id, data){
 			}
 			
 		}).attr("x", function(){
-		   return (0.5 * pieWidth) + 5;
+			if (pieWidth >= 800) {
+				return (0.58 * pieWidth);
+			}else if(pieWidth >= 400){
+				return (0.5 * pieWidth) + 5;
+			}
+			else{
+				return (0.5 * pieWidth) + 5;
+				
+			}
+			
+		   
 		});
         
         pieObject.updateOut = function(){
