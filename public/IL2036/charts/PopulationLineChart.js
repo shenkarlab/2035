@@ -130,6 +130,37 @@ function PopulationLineChart(id, data){
     }).attr("height", function(d){
         return chartHeight - heightScale(d.ultraOrthodoxTotal) - (botPadding);
     });
+	
+	   var yearSelectorSvg = svg.append("g");
+	  var headText = yearSelectorSvg.append("text").text(function(d){
+            return "אוכלוסיה בישראל לפי מגזרים";
+        })
+		.attr("y",function(){
+			return (0.1 * chartHeight);	
+		})
+		.attr("font-size", function(){
+			if(chartWidth >= 800){
+				return "55px";
+			}else if(chartWidth >= 400){
+				return "45px";
+			}else{
+				return "28px";
+			}
+			
+		}).attr("x", function(){
+			if (chartWidth >= 800) {
+				return (0.8 * chartWidth);
+			}else if(chartWidth >= 400){
+				return (0.8 * chartWidth);
+			}
+			else{
+				return (0.8 * chartWidth);
+				
+			}
+			
+		   
+		});
+        
     
     /// Interaction Functions
     function endPainiting(){
