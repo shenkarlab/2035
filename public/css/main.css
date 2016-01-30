@@ -87,10 +87,12 @@ body.switchTimeline #badTimeline{
 
 .legend
 {
-    
+     
     display:inline-block;
     border-collapse: collapse;
     border-spacing: 0px;
+    	float: left;
+    margin: 0 0 10px 10px;
 }
 table
 {
