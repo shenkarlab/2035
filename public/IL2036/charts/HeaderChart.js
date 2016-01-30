@@ -58,7 +58,7 @@ function HeaderChart(id, data, year){
     
     
     var jewText = jewGruop.append("text").text(function(d){
-        return helper.getInLargeMilions(activeJewNumber) + "  מיליון יהודים והשאר  ";
+        return "";
     }).attr("y", 15).attr("font-size", function(){
         return "20px";
     }).attr("x", function(){
@@ -66,7 +66,7 @@ function HeaderChart(id, data, year){
     }).style('fill', "white");
     
     var arabText = arabGruop.append("text").text(function(d){
-        return helper.getInLargeMilions(activeArabNumber) + "  מיליון ערבים  ";
+        return "";
     }).attr("y", 15).attr("font-size", function(){
         return "20px";
     }).attr("x", function(){
@@ -74,7 +74,7 @@ function HeaderChart(id, data, year){
     }).style('fill', "white");
 	
 	 var ortodoxText = ortodoxGruop.append("text").text(function(d){
-        return helper.getInLargeMilions(activeOrtodoxNumber) + "  מיליון חרדים  ";
+        return "";
     }).attr("y", 15).attr("font-size", function(){
         return "20px";
     }).attr("x", function(){
@@ -108,13 +108,13 @@ function HeaderChart(id, data, year){
         if (newYearID < data.length) {
             jewText.transition().duration(500).attr("x", function(){
                 return (newJewPart * 0.5);
-            }).text(helper.getInLargeMilions(activeJewNumber) +  "  מיליון יהודים והשאר  ");
+            }).text("");
             arabText.transition().duration(500).attr("x", function(){
                 return newArabStart + (newArabPart * 0.6);
-            }).text(helper.getInLargeMilions(activeArabNumber) + "  מיליון ערבים  ");
+            }).text("");
 			ortodoxText.transition().duration(500).attr("x", function(){
                 return newOrdodoxStart + (newOrtodoxPart * 0.7);
-            }).text(helper.getInLargeMilions(activeOrtodoxNumber) + "  מיליון חרדים  ");
+            }).text("");
         }
         
     }
@@ -132,9 +132,9 @@ function HeaderChart(id, data, year){
 			ortodoxText.transition().duration(500).text( ortodoxProz + "%" +  " חרדים  ");
 		 }
 		  function mouseOutHeader(){
-            jewText.transition().duration(500).text(helper.getInLargeMilions(activeJewNumber)  + " מיליון יהודים והשאר  ");
-            arabText.transition().duration(500).text(helper.getInLargeMilions(activeArabNumber) + "  מיליון ערבים  ");
-			ortodoxText.transition().duration(500).text(helper.getInLargeMilions(activeOrtodoxNumber) + "  מיליון חרדים  ");
+            jewText.transition().duration(500).text("");
+            arabText.transition().duration(500).text("");
+			ortodoxText.transition().duration(500).text("");
 		 }
     
     
