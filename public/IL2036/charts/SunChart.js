@@ -1,7 +1,7 @@
 
 
 
-
+var sunChartId = 0;
 function SunChart(id, data){
 
     var yearData = data[3];
@@ -9,14 +9,15 @@ function SunChart(id, data){
 
     var isDoneToMake = false;
     var div = d3.select(id);
-	 var svgHeight  = 593;
-	var svgWidth  = 967;
+	console.log("id : " + id);
+     var svgHeight  = 593;
+//	var svgWidth  = 967;
   //  var svgHeight  = parseInt($(id)[0].offsetHeight,10);
    // var svgHeight = parseInt(div.style("height"), 10);
-  //  var svgWidth = parseInt(div.style("width"), 10);
+    var svgWidth = parseInt(div.style("width"), 10);
     var pieWidth = (svgWidth / 3) * 2;
     var pieHeight = svgHeight;
-    var mapWidth = (svgWidth / 3) * 1;
+    var mapWidth = ((svgWidth / 3) * 1) -10;
     var mapHeight = svgHeight;
     var padding = svgWidth / 25;
     var minSqareVal = 0;
@@ -46,8 +47,9 @@ function SunChart(id, data){
     
    
     
-    var tableGroup = d3.select(id).append("g").attr("width", svgWidth).attr("height", svgHeight);
-	 var leg = legend();
+    var tableGroup = d3.select(id).append("g").attr("width", svgWidth).attr("height", svgHeight).attr('class', "sunChart" + sunChartId);
+	sunChartId++;
+	var leg = legend();
     var pieSvg;
     
     pieSvg = tableGroup.append("svg").attr("width", pieWidth).attr("height", pieHeight);
