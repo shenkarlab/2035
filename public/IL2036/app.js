@@ -658,6 +658,7 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 		$("body").animate({scrollTop:0}, 400);
 		$scope.stage = "goodtimeline";
 		$scope.showTransFrame = false;
+		$scope.senario = "good";
 	};
 	
 	$scope.startTimeline = function(){
@@ -701,20 +702,29 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 		 * update main header graph 
 		 */
 		
-		if(y < $scope.lastScrolledYear){
+		if(y < $scope.lastScrolledYear && $scope.senario == "bad"){
 			$scope.badYearsScrolled++;
+			console.log("bad years: "+$scope.badYearsScrolled);
 			
-			
-			if($scope.badYearsScrolled >= 4){
+			if($scope.badYearsScrolled >= 4 && $scope.stage == 'timeline'){
 				
 				$scope.showTransFrame = true;
 			}
+			
+			if(window.mainChart != undefined)
+				window.mainChart.update(y);
+			$scope.lastScrolledYear = y;
+			
+			$scope.shrinkFont(y);
 		}
 		
-		if(y != $scope.lastScrolledYear){
+		if(y > $scope.lastScrolledYear && $scope.senario == "good"){
 			
-			window.mainChart.update(y);
+			if(window.mainChart != undefined)
+				window.mainChart.update(y);
 			$scope.lastScrolledYear = y;
+			
+			$scope.shrinkFont(y);
 		}
 		
 		
@@ -735,15 +745,24 @@ app.controller("mainAppController", ["$scope", "$http", "$rootScope", function($
 		return String(window.location);
 	};
 	
-	$(document).ready(function(){
+	$scope.shrinkFont = function(year){
 		
 		if(document.body.clientWidth < 600){
 		
-			$("body .row *").each(function(){
+			$("#"+year).find("*").each(function(){
 				
-				$(this).css({fontSize:(parseInt($(this).css(fontSize))*.1)+"pt"});
+				if($(this).css("font-size") != ""){
+					
+					console.log($(this).css("font-size"));
+					//$(this).css("font-size", (parseInt($(this).css("font-size"))*.1)+"pt");
+				}
+				
 			});
-		}	
+		}
+	};
+	$(document).ready(function(){
+		
+			
 	});
 	
 	
