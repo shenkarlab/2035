@@ -126,7 +126,7 @@ function LineDonatChart(id, data){
             places[i][7] = center[1];	
 			}
 			else if(i == 2){
-			places[i][6] = center[0];
+			places[i][6] = -0.12 * pieWidth;
             places[i][7] = center[1];	
 			}
 			else if(i == 3){
@@ -146,11 +146,11 @@ function LineDonatChart(id, data){
 		}
 		
        else if(pieWidth >= 600){
-		var places = [[-0.35 * minSqareVal, 0.31 * minSqareVal, -0.40 * minSqareVal, 0.3135 * minSqareVal, -0.3 * minSqareVal, 0.3125 * minSqareVal]
-		, [0.40 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.187 * minSqareVal, 0.3125 * minSqareVal]
-		, [-0.35 * minSqareVal, -0.415 * minSqareVal, -0.40 * minSqareVal, -0.4125 * minSqareVal, -0.25 * minSqareVal, -0.4125 * minSqareVal]
-		, [0.40 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
-		, [-0.35 * minSqareVal, -0.305 * minSqareVal, -0.40 * minSqareVal, -0.3025 * minSqareVal, -0.3 * minSqareVal, -0.3025 * minSqareVal]];
+		var places = [[-0.40 * minSqareVal, 0.31 * minSqareVal, -0.40 * minSqareVal, 0.3135 * minSqareVal, -0.35 * minSqareVal, 0.3125 * minSqareVal]
+		, [0.45 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.287 * minSqareVal, 0.3125 * minSqareVal]
+		, [-0.4 * minSqareVal, -0.415 * minSqareVal, -0.40 * minSqareVal, -0.4125 * minSqareVal, -0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [0.52 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [-0.4 * minSqareVal, -0.305 * minSqareVal, -0.40 * minSqareVal, -0.3025 * minSqareVal, -0.35 * minSqareVal, -0.3025 * minSqareVal]];
         var textBox2
 		 = arcs.append("text").text(function(d, i){
             return innerData[i].publicName;
@@ -165,7 +165,7 @@ function LineDonatChart(id, data){
             places[i][7] = center[1];	
 			}
 			else if(i == 2){
-			places[i][6] = center[0];
+			places[i][6] = -0.18 * pieWidth;
             places[i][7] = center[1];	
 			}
 			else if(i == 3){
@@ -205,7 +205,7 @@ function LineDonatChart(id, data){
             places[i][7] = center[1];	
 			}
 			else if(i == 2){
-			places[i][6] = center[0];
+			places[i][6] = -0.12 * pieWidth;
             places[i][7] = center[1];	
 			}
 			else if(i == 3){
@@ -269,20 +269,22 @@ function LineDonatChart(id, data){
             return 2009;
         })
 		.attr("y",function(){
-			if (minSqareVal >= 800) {
-				return (0.6 * pieHeight);
+			if (pieHeight >= 800) {
+				return (0.55 * pieHeight);
 			}else if(pieHeight >= 400){
 				return (0.58 * pieHeight) ;
 			}
 			else{
-				return (0.5 * pieHeight);
+				return (0.6 * pieHeight);
 				
 			}
 			
 		})
 		.attr("font-size", function(){
-			if(pieWidth >= 400){
-				return "60px";
+			if(pieWidth >= 800){
+				return "65px";
+			}else if(pieWidth >= 400){
+				return "45px";
 			}else{
 				return "28px";
 			}
@@ -294,7 +296,37 @@ function LineDonatChart(id, data){
 				return (0.5 * pieWidth) + 5;
 			}
 			else{
-				return (0.5 * pieWidth) + 5;
+				return (0.5 * pieWidth);
+				
+			}
+			
+		   
+		});
+		
+        
+        var headText = yearSelectorSvg.append("text").text(function(d){
+            return "הוצאות המדינה לפי שנים";
+        })
+		.attr("y",function(){
+			return (0.1 * pieHeight);	
+		})
+		.attr("font-size", function(){
+			if(pieWidth >= 800){
+				return "55px";
+			}else if(pieWidth >= 400){
+				return "45px";
+			}else{
+				return "28px";
+			}
+			
+		}).attr("x", function(){
+			if (pieWidth >= 800) {
+				return (0.74 * pieWidth);
+			}else if(pieWidth >= 400){
+				return (0.72 * pieWidth);
+			}
+			else{
+				return (0.7 * pieWidth);
 				
 			}
 			
