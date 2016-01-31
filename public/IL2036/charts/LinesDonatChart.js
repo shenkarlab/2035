@@ -36,9 +36,15 @@ function LineDonatChart(id, data){
        pieTranlateWidth = ((pieWidth) * 0.47) + padding;	
 		
 	}else if(pieWidth >= 600){
+       pieTranlateWidth = ((pieWidth) * 0.45) + padding;	
+		
+	}else if(pieWidth >= 500){
+       pieTranlateWidth = ((pieWidth) * 0.45) + padding;	
+	}
+	else if(pieWidth >= 400){
        pieTranlateWidth = ((pieWidth) * 0.4) + padding;	
 		
-	}else if(pieWidth >= 400){
+	}else if(pieWidth >= 300){
        pieTranlateWidth = ((pieWidth) * 0.4) + padding;	
 		
 	}else{
@@ -111,7 +117,7 @@ function LineDonatChart(id, data){
 		, [0.45 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.287 * minSqareVal, 0.3125 * minSqareVal]
 		, [-0.45 * minSqareVal, -0.415 * minSqareVal, -0.45 * minSqareVal, -0.4125 * minSqareVal, -0.3 * minSqareVal, -0.4125 * minSqareVal]
 		, [0.52 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
-		, [-0.45 * minSqareVal, -0.305 * minSqareVal, -0.45 * minSqareVal, -0.3025 * minSqareVal, -0.35 * minSqareVal, -0.3025 * minSqareVal]];
+		, [-0.45 * minSqareVal, -0.305 * minSqareVal, -0.45 * minSqareVal, -0.3025 * minSqareVal, -0.39 * minSqareVal, -0.3025 * minSqareVal]];
         var textBox2
 		 = arcs.append("text").text(function(d, i){
             return innerData[i].publicName;
@@ -149,8 +155,8 @@ function LineDonatChart(id, data){
 		var places = [[-0.40 * minSqareVal, 0.31 * minSqareVal, -0.40 * minSqareVal, 0.3135 * minSqareVal, -0.35 * minSqareVal, 0.3125 * minSqareVal]
 		, [0.45 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.287 * minSqareVal, 0.3125 * minSqareVal]
 		, [-0.4 * minSqareVal, -0.415 * minSqareVal, -0.40 * minSqareVal, -0.4125 * minSqareVal, -0.3 * minSqareVal, -0.4125 * minSqareVal]
-		, [0.52 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
-		, [-0.4 * minSqareVal, -0.305 * minSqareVal, -0.40 * minSqareVal, -0.3025 * minSqareVal, -0.35 * minSqareVal, -0.3025 * minSqareVal]];
+		, [0.47 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [-0.4 * minSqareVal, -0.305 * minSqareVal, -0.40 * minSqareVal, -0.3025 * minSqareVal, -0.38 * minSqareVal, -0.3025 * minSqareVal]];
         var textBox2
 		 = arcs.append("text").text(function(d, i){
             return innerData[i].publicName;
@@ -269,13 +275,22 @@ function LineDonatChart(id, data){
             return 2009;
         })
 		.attr("y",function(){
-			if (pieHeight >= 800) {
-				return (0.55 * pieHeight);
-			}else if(pieHeight >= 400){
-				return (0.58 * pieHeight) ;
+			if (minSqareVal >= 800) {
+				return (0.65 * minSqareVal);
+			}else if(minSqareVal >= 700){
+				return (0.64 * minSqareVal) ;
+			}
+			else if(minSqareVal >= 600){
+				return (0.62 * minSqareVal) ;
+			}
+			else if(minSqareVal >= 500){
+				return (0.57 * minSqareVal) ;
+			}
+			else if(minSqareVal >= 400){
+				return (0.62 * minSqareVal) ;
 			}
 			else{
-				return (0.6 * pieHeight);
+				return (0.515 * pieHeight);
 				
 			}
 			
@@ -283,7 +298,10 @@ function LineDonatChart(id, data){
 		.attr("font-size", function(){
 			if(pieWidth >= 800){
 				return "65px";
-			}else if(pieWidth >= 400){
+			}else if(pieWidth >= 600){
+				return "55px";
+			}
+			else if(pieWidth >= 400){
 				return "45px";
 			}else{
 				return "28px";
@@ -292,8 +310,12 @@ function LineDonatChart(id, data){
 		}).attr("x", function(){
 			if (pieWidth >= 800) {
 				return (0.58 * pieWidth);
-			}else if(pieWidth >= 400){
-				return (0.5 * pieWidth) + 5;
+			}
+			else if(pieWidth >= 600){
+				return (0.56 * pieWidth) + 5;
+			}
+			else if(pieWidth >= 400){
+				return (0.52 * pieWidth);
 			}
 			else{
 				return (0.5 * pieWidth);
@@ -308,25 +330,31 @@ function LineDonatChart(id, data){
             return "הוצאות המדינה לפי שנים";
         })
 		.attr("y",function(){
-			return (0.1 * pieHeight);	
+			return (0.08 * pieHeight);	
 		})
 		.attr("font-size", function(){
 			if(pieWidth >= 800){
 				return "55px";
-			}else if(pieWidth >= 400){
-				return "45px";
+			}else if(pieWidth >= 600){
+				return "35px";
+			}
+			else if(pieWidth >= 400){
+				return "30px";
 			}else{
 				return "28px";
 			}
 			
 		}).attr("x", function(){
 			if (pieWidth >= 800) {
-				return (0.74 * pieWidth);
-			}else if(pieWidth >= 400){
-				return (0.72 * pieWidth);
+				return (0.8 * pieWidth);
+			}else if(pieWidth >= 600){
+				return (0.76 * pieWidth);
+			}
+			else if(pieWidth >= 400){
+				return (0.82 * pieWidth);
 			}
 			else{
-				return (0.7 * pieWidth);
+				return (0.79 * pieWidth);
 				
 			}
 			
