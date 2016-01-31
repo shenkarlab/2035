@@ -1,324 +1,516 @@
 
+function LineDonatChart(id, data){
 
-function PopulationLineChart(id, data){
-	///Set Dinamic Sizes
+
+    var dC = {}
     var helper = ChartHelper();
     var div = d3.select(id);
-    var svgHeight  = 450;
+	var svgHeight  = 593;
 //	var svgWidth  = 967;
-    // var svgHeight = parseInt(div.style("height"), 10);
-    // var svgWidth = parseInt(div.style("width"), 10);
-  //  var svgHeight  = parseInt($(id)[0].offsetHeight,10);
+   // var svgHeight = parseInt(div.style("height"), 10);
+  //  var svgHeight  =  parseInt($(id)[0].offsetHeight,10);
+  //  var svgWidth = parseInt(div.style("width"), 10);
 	var svgWidth = parseInt($(id)[0].offsetWidth,10);
-    var chartWidth = (svgWidth / 3) * 2;
-    var chartHeight = svgHeight;
-    var mapWidth = ((svgWidth / 3) * 1) -10;
+    var pieWidth = (svgWidth / 3) * 2;
+    var pieHeight = svgHeight;
+    var mapWidth = ((svgWidth / 3) * 1) - 10;
     var mapHeight = svgHeight;
     
-    var paddingLeft = 0.15 * chartWidth;
-	var paddingRight = 0.05 * chartWidth;
-    var botPadding = 0.25 * chartHeight;
-	var paddingTop = 0.1 * chartHeight;
-    var isDoneToMake = false;
+    //console.log("pieHeight : " + pieHeight);
+    var padding = svgWidth / 25;
+    var minSqareVal = 0;
+    if (pieHeight >= pieWidth) {
+        minSqareVal = pieWidth;
+    }
+    else {
+        minSqareVal = pieHeight;
+    }
+	if(minSqareVal >= 900){
+		minSqareVal = 900;
+	}
+    var pieTranlateHeight = ((pieHeight) * 0.48) + padding;;
+    var pieTranlateWidth = 10;
     
-    ///Sort And filter Data
+	
+	if(pieWidth >= 800){
+       pieTranlateWidth = ((pieWidth) * 0.47) + padding;	
+		
+	}else if(pieWidth >= 600){
+       pieTranlateWidth = ((pieWidth) * 0.45) + padding;	
+		
+	}else if(pieWidth >= 500){
+       pieTranlateWidth = ((pieWidth) * 0.45) + padding;	
+	}
+	else if(pieWidth >= 400){
+       pieTranlateWidth = ((pieWidth) * 0.4) + padding;	
+		
+	}else if(pieWidth >= 300){
+       pieTranlateWidth = ((pieWidth) * 0.4) + padding;	
+		
+	}else{
+       pieTranlateWidth = ((minSqareVal / 5) * 2) + padding;			
+	}
+	
+    var paddingLeft = 80;
+    var paddingTop = 100;
+    var pointShift = 15;
+    var middleY = pieHeight / 2;
+    var middleX = pieWidth / 2;
+    
+    
+    
+    var innerRadius = minSqareVal / 6;
+    var OuterRadius = (minSqareVal / 5) * 2;
+    var yearNow = 0;
+      
+   
+    
     data.sort(function(a, b){
         return d3.ascending(a.year, b.year);
     });
-    data = data.filter(function(d, i){
-        return (i > 5);
-    });
-    data = data.filter(function(d, i){
-        return (i % 4 == 0);
-    });
-	
-	///Add index data to each data point
-    data.forEach(function(d,i){d.index=i;});
-	
-	///Make minimum and maximum values for scales	
-    var minPopulationVal = d3.min(data, function(d, i){
-        return d.ultraOrthodoxOld;
-    });
-    var MaxPopulationVal = helper.GetDataMaxPopulation(data);
-	///Make Year titles for bottom scale
-	var yearTitles = data.map(function(d){
-        return d.year;
-    });
-	
     
-    //Make Scales
-    var heightScale = d3.scale.linear().domain([MaxPopulationVal, minPopulationVal]).range([paddingTop, chartHeight - botPadding]);
-   
-    var widthScale = d3.scale.ordinal().domain(d3.range(data.length)).domain(yearTitles).rangeRoundBands([paddingLeft, chartWidth - paddingRight], 0.1);
-    var axisTextSize = "20px"
-    if(chartWidth >= 800){
-				axisTextSize =  "30px";
-			}else if(chartWidth >= 600){
-				axisTextSize = "25px";
-			}else if(chartWidth >= 400){
-				axisTextSize = "20px";
+    var tableGroup = div.append("g").attr("width", svgWidth).attr("height", svgHeight);
+    var donatDiv = div.append("svg");
+	
+    var leg = legend(data);
+    var outer = makePie( data); 
+    
+    
+    
+    
+    var pieSvg;
+    
+    function makePie( yearData){
+    
+        var font = helper.getPieFontSize(pieWidth);
+        div.on("mouseover", mouseoverColor);
+		div.on("mouseout",mouseoutColor);
+    
+    
+        var lastYear = 2009;
+        var pieObject = {};
+        var innerData = helper.makeExpencesInnerData(0, yearData);     
+        
+        
+        pieSvg = tableGroup.append("svg").attr("width", pieWidth).attr("height", pieHeight).attr("class", 'donatChart');
+        
+		pieSvg.on("mousemove", mouseover);
+		
+		
+        var pieGroup = pieSvg.append("g").attr("width", svgWidth).attr("height", svgHeight).attr("class", 'pieGroup').attr("transform", "translate(" + pieTranlateWidth + "," + pieTranlateHeight + ")");
+        
+        var arc = d3.svg.arc().innerRadius(innerRadius).outerRadius(OuterRadius);
+        var pie = d3.layout.pie().value(function(d){
+            return d.populatoin
+        });
+        
+        var arcs = pieGroup.selectAll(".arc").data(pie(helper.makeExpencesInnerData(0, yearData))).enter().append("g");
+        
+        var path = arcs.append("path").attr("d", arc).each(function(d){
+            this._current = d;
+        }).attr("fill", function(d, i){
+            return helper.segExpencesBWColor(innerData[i].name);
+        });
+		if (pieWidth >= 900) {
+			pieSvg.attr("height", 900);
+		}
+		else if(pieWidth >= 800){
+		var places = [[-0.45 * minSqareVal, 0.31 * minSqareVal, -0.45 * minSqareVal, 0.3135 * minSqareVal, -0.35 * minSqareVal, 0.3125 * minSqareVal]
+		, [0.45 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.287 * minSqareVal, 0.3125 * minSqareVal]
+		, [-0.45 * minSqareVal, -0.415 * minSqareVal, -0.45 * minSqareVal, -0.4125 * minSqareVal, -0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [0.52 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [-0.45 * minSqareVal, -0.305 * minSqareVal, -0.45 * minSqareVal, -0.3025 * minSqareVal, -0.39 * minSqareVal, -0.3025 * minSqareVal]];
+        var textBox2
+		 = arcs.append("text").text(function(d, i){
+            return innerData[i].publicName;
+        }).attr("font-size",font).attr("transform", function(d, i){
+			 var center = arc.centroid(d);
+			if(i == 0){
+			places[i][6] = -0.2 * pieWidth;
+            places[i][7] = center[1];	
 			}
-			else{
-				axisTextSize = "15px";
+			else if(i == 1){
+			places[i][6] = 0.15 * pieWidth;
+            places[i][7] = center[1];	
 			}
+			else if(i == 2){
+			places[i][6] = -0.12 * pieWidth;
+            places[i][7] = center[1];	
+			}
+			else if(i == 3){
+			places[i][6] = 0.15 * pieWidth;
+            places[i][7] = center[1];	
+			}
+			else if(i == 4){
+			places[i][6] = -0.2 * pieWidth;
+            places[i][7] = center[1];	
+			}else{
+			places[i][6] = center[0];
+            places[i][7] = center[1];	
+			}
+            return "translate(" + places[i][0] + "," + (places[i][1]) + ")";
+        });
+			 makeLines();	
+		}
+		
+       else if(pieWidth >= 600){
+		var places = [[-0.40 * minSqareVal, 0.31 * minSqareVal, -0.40 * minSqareVal, 0.3135 * minSqareVal, -0.35 * minSqareVal, 0.3125 * minSqareVal]
+		, [0.45 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.287 * minSqareVal, 0.3125 * minSqareVal]
+		, [-0.4 * minSqareVal, -0.415 * minSqareVal, -0.40 * minSqareVal, -0.4125 * minSqareVal, -0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [0.47 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [-0.4 * minSqareVal, -0.305 * minSqareVal, -0.40 * minSqareVal, -0.3025 * minSqareVal, -0.38 * minSqareVal, -0.3025 * minSqareVal]];
+        var textBox2
+		 = arcs.append("text").text(function(d, i){
+            return innerData[i].publicName;
+        }).attr("font-size",font).attr("transform", function(d, i){
+			 var center = arc.centroid(d);
+			if(i == 0){
+			places[i][6] = -0.25 * pieWidth;
+            places[i][7] = center[1];	
+			}
+			else if(i == 1){
+			places[i][6] = 0.15 * pieWidth;
+            places[i][7] = center[1];	
+			}
+			else if(i == 2){
+			places[i][6] = -0.18 * pieWidth;
+            places[i][7] = center[1];	
+			}
+			else if(i == 3){
+			places[i][6] = 0.15 * pieWidth;
+            places[i][7] = center[1];	
+			}
+			else if(i == 4){
+			places[i][6] = -0.25 * pieWidth;
+            places[i][7] = center[1];	
+			}else{
+			places[i][6] = center[0];
+            places[i][7] = center[1];	
+			}
+           
+        
+            return "translate(" + places[i][0] + "," + (places[i][1]) + ")";
+        });
+			 makeLines();	
+		}
+		else if(pieWidth >= 400){
+		var places = [[-0.35 * minSqareVal, 0.31 * minSqareVal, -0.40 * minSqareVal, 0.3135 * minSqareVal, -0.3 * minSqareVal, 0.3125 * minSqareVal]
+		, [0.40 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.187 * minSqareVal, 0.3125 * minSqareVal]
+		, [-0.35 * minSqareVal, -0.415 * minSqareVal, -0.40 * minSqareVal, -0.4125 * minSqareVal, -0.25 * minSqareVal, -0.4125 * minSqareVal]
+		, [0.40 * minSqareVal, -0.415 * minSqareVal, 0.40 * minSqareVal, -0.4125 * minSqareVal, 0.3 * minSqareVal, -0.4125 * minSqareVal]
+		, [-0.35 * minSqareVal, -0.305 * minSqareVal, -0.40 * minSqareVal, -0.3025 * minSqareVal, -0.3 * minSqareVal, -0.3025 * minSqareVal]];
+        var textBox2
+		 = arcs.append("text").text(function(d, i){
+            return innerData[i].publicName;
+        }).attr("font-size",font).attr("transform", function(d, i){
+			 var center = arc.centroid(d);
+			if(i == 0){
+			places[i][6] = -0.25 * pieWidth;
+            places[i][7] = center[1];	
+			}
+			else if(i == 1){
+			places[i][6] = 0.15 * pieWidth;
+            places[i][7] = center[1];	
+			}
+			else if(i == 2){
+			places[i][6] = -0.12 * pieWidth;
+            places[i][7] = center[1];	
+			}
+			else if(i == 3){
+			places[i][6] = 0.15 * pieWidth;
+            places[i][7] = center[1];	
+			}
+			else if(i == 4){
+			places[i][6] = -0.25 * pieWidth;
+            places[i][7] = center[1];	
+			}else{
+			places[i][6] = center[0];
+            places[i][7] = center[1];	
+			}
+           
+        
+            return "translate(" + places[i][0] + "," + (places[i][1]) + ")";
+        });
+			 makeLines();	
+			
+		}
 	
-	
-    //Make Groupes and SVGs
-	//div.attr("width", svgWidth).attr("height", svgHeight);
-    var group = div.append("g").attr("width", svgWidth).attr("height", svgHeight);
-    var sideText = legend(data);
-    var svg = group.append("svg").attr("width", chartWidth).attr("height", chartHeight);
-    var gruops = svg.selectAll("g").data(data).enter().append("g");
-	
-	
-    //Make Axis Acording to Scales
-    var widthAxis = d3.svg.axis().scale(widthScale).orient("bottom").tickSize(0, 1);
+        function makeLines(){
+			
+	    MakeLine(pieGroup, 0);
+        MakeLine(pieGroup, 1);
+        MakeLine(pieGroup, 2);
+        MakeLine(pieGroup, 3);
+        MakeLine(pieGroup, 4);
+			
+		}
+       
+        function MakeLine(selectorSvg, lineNum){
+            var lineData = [{
+                "x": places[lineNum][2],
+                "y": places[lineNum][3]
+            }, {
+                "x": places[lineNum][4],
+                "y": places[lineNum][5]
+            }, {
+                "x": places[lineNum][6],
+                "y": places[lineNum][7]
+            }];
+            
+            //This is the accessor function we talked about above
+            var lineFunction = d3.svg.line().x(function(d){
+                return d.x;
+            }).y(function(d){
+                return d.y;
+            }).interpolate("linear");
+            
+            
+            
+            //The line SVG Path we draw
+            var lineGraph = selectorSvg.append("path").attr("d", lineFunction(lineData)).attr("stroke", "black").attr("stroke-width", 1).attr("fill", "none");
+        }
+        
+        var yearSelectorSvg = pieSvg.append("g");
 
-    var axisx = svg.append("g").attr("class", "x-axis").attr("transform", "translate(" + 0 + "," + (chartHeight - botPadding) + ")").attr("font-size", "10px").call(widthAxis).style("font-size",axisTextSize);
-    
-    var heightAxis = d3.svg.axis().scale(heightScale).orient("right").ticks(10).tickSize(0, 0).tickFormat(function(d){
-        return  " Mil " + (Math.round((d) / 100000) / 10);
-    });
-    
-    var axisY = svg.append("g").attr("transform", "translate(" + (paddingLeft * 0.7) + "," + 0 + ")").call(heightAxis).style("font-size",axisTextSize);
-    
-  
-    
-    //Make Bars
-    var jewRects = gruops.append("rect").attr("width", widthScale.rangeBand()).attr("height", 0).attr('y', function(d){
-        return (heightScale(d.jewTotal));
-    }).attr("x", function(d, i){
-        return widthScale(d.year);
-    }).attr("fill", function(d){
-        return helper.segPopulationColor("other");
-    })
-    .on("mouseover", grapthLineUpdate);
-    
-    jewRects.append("title").text(function(d){
-        return "Year " + d.year + " The Jew Populatoin: " + helper.getInMilions(d.jewTotal) + " Mil";
-    })
-    
-    jewRects.transition().delay(1000).duration(function(d){
-        return 500;
-    }).attr("height", function(d){
-        return chartHeight - heightScale(d.jewTotal) - (botPadding);
-    }).each("end", endPainiting);
-    
-    
-    var arabRects = gruops.append("rect").attr("width", widthScale.rangeBand()).attr("height", 0).attr('y', function(d){
-        return (heightScale(d.arabTotal));
-    }).attr("x", function(d, i){
-        return widthScale(d.year);
-    }).attr("fill", function(d){
-        return helper.segPopulationColor("jew");
-    })
-    .on("mouseover", grapthLineUpdate);
-    
-    arabRects.append("title").text(function(d){
-        return "Year " + d.year + " The Arab Populatoin: " +helper.getInMilions(d.arabTotal) + " Mil";
-    });
-    arabRects.transition().delay(500).duration(function(d){
-        return 500;
-    }).attr("height", function(d){
-        return chartHeight - heightScale(d.arabTotal) - (botPadding);
-    });
-    
-    
-    var ortodoxRects = gruops.append("rect").attr("width", widthScale.rangeBand()).attr("height", 0).attr("y", function(d){
-        return (heightScale(d.ultraOrthodoxTotal));
-    }).attr("x", function(d, i){
-        return widthScale(d.year);
-    }).attr("fill", function(d){
-        return helper.segPopulationColor("arab");
-    }).on("mouseover", grapthLineUpdate);
-    
-    ortodoxRects.append("title").text(function(d){
-        return "Year " + d.year + " The Ortodox Populatoin: " + helper.getInMilions(d.ultraOrthodoxTotal) + " Mil";
-    });
-    
-    ortodoxRects.transition().delay(0).duration(function(d){
-        return 500;
-    }).attr("height", function(d){
-        return chartHeight - heightScale(d.ultraOrthodoxTotal) - (botPadding);
-    });
-	
-	   var yearSelectorSvg = svg.append("g");
-	  var headText = yearSelectorSvg.append("text").text(function(d){
-            return "אוכלוסיה בישראל לפי מגזר";
+        
+        var centerText = yearSelectorSvg.append("text").text(function(d){
+            return 2009;
         })
 		.attr("y",function(){
-			return (0.1 * chartHeight);	
-		})
-		.attr("font-size", function(){
-			if(chartWidth >= 800){
-				return "50px";
-			}else if(chartWidth >= 600){
-				return "45px";
-			}else if(chartWidth >= 400){
-				return "40px";
+			if (minSqareVal >= 800) {
+				return (0.65 * minSqareVal);
+			}else if(minSqareVal >= 700){
+				return (0.64 * minSqareVal) ;
+			}
+			else if(minSqareVal >= 600){
+				return (0.62 * minSqareVal) ;
+			}
+			else if(minSqareVal >= 500){
+				return (0.57 * minSqareVal) ;
+			}
+			else if(minSqareVal >= 400){
+				return (0.62 * minSqareVal) ;
 			}
 			else{
+				return (0.515 * pieHeight);
+				
+			}
+			
+		})
+		.attr("font-size", function(){
+			if(pieWidth >= 800){
+				return "65px";
+			}else if(pieWidth >= 600){
+				return "55px";
+			}
+			else if(pieWidth >= 400){
+				return "45px";
+			}else{
 				return "28px";
 			}
 			
 		}).attr("x", function(){
-			if (chartWidth >= 800) {
-				return (0.8 * chartWidth);
-			}else if(chartWidth >= 600){
-				return (0.86 * chartWidth);
+			if (pieWidth >= 800) {
+				return (0.58 * pieWidth);
 			}
-			else if(chartWidth >= 400){
-				return (0.89 * chartWidth);
+			else if(pieWidth >= 600){
+				return (0.56 * pieWidth) + 5;
+			}
+			else if(pieWidth >= 400){
+				return (0.52 * pieWidth);
 			}
 			else{
-				return (0.89 * chartWidth);
+				return (0.5 * pieWidth);
+				
+			}
+			
+		   
+		});
+		
+        
+        var headText = yearSelectorSvg.append("text").text(function(d){
+            return "הוצאות המדינה לפי שנים";
+        })
+		.attr("y",function(){
+			return (0.08 * pieHeight);	
+		})
+		.attr("font-size", function(){
+			if(pieWidth >= 800){
+				return "55px";
+			}else if(pieWidth >= 600){
+				return "35px";
+			}
+			else if(pieWidth >= 400){
+				return "30px";
+			}else{
+				return "28px";
+			}
+			
+		}).attr("x", function(){
+			if (pieWidth >= 800) {
+				return (0.8 * pieWidth);
+			}else if(pieWidth >= 600){
+				return (0.76 * pieWidth);
+			}
+			else if(pieWidth >= 400){
+				return (0.82 * pieWidth);
+			}
+			else{
+				return (0.79 * pieWidth);
 				
 			}
 			
 		   
 		});
         
-    
-    /// Interaction Functions
-    function endPainiting(){
-        console.log("Done Painting: ");
-        isDoneToMake = true;
-        PaintGraphBW();
-		sideText.UpdateBW();
-    }
-    
-    function grapthLineUpdate(i){
-		if(isDoneToMake){
-		sideText.update(i.index);	
-		}
+        pieObject.updateOut = function(){
+        
+        
+        }
+        
+        function mouseoutColor(){
+		path.transition().duration(500).attr("fill", function(d, i){
+            return helper.segExpencesBWColor(innerData[i].name)
+        });
+			leg.UpdateBW();
+        }
+		 function mouseoverColor(){
+		 	leg.UpdateColor();
+		 	path.transition().duration(500).attr("fill", function(d, i){
+		 		return helper.segExpencesColor(innerData[i].name);
+		 	});
+		 }
+        
+        
+        pieObject.update = function(year){
+            pie.value(function(d){
+                return d.populatoin;
+            }); // change the value function
+            path = path.data(pie(helper.makeExpencesInnerData(year, yearData))); // compute the new angles
+            path.transition().duration(750) // redraw the arcs
+			.attr("fill", function(d, i){
+		 		return helper.segExpencesColor(innerData[i].name);
+		 	})
+			.attrTween("d", arcTween); 
+        }
 		
-	} 
-  
-    div.on("mouseout", mouseoutColor);
-    div.on("mouseover", mouseoverColor);
-    
-    function mouseoutColor(){
-        if (isDoneToMake) {
-            PaintGraphBW();
+		
+        function mouseover(){
+	 	
+            yearNow = parseInt(d3.mouse(this)[0] / (pieWidth / data.length));
+            if (yearNow < data.length) {
+            
+            
+                //console.log(" Year : " +  data[yearNow].year);
+                if (lastYear == +data[yearNow].year) {
+                
+                }
+                else {
+                    var diff = +data[yearNow].year - +lastYear;
+                    //console.log(" diff : " +  diff);
+                    leg.update(yearNow);
+                    pieObject.update(yearNow);
+                    if (diff >= 0) {
+                        for (var i = 0; i <= diff; i++) {
+                            centerText.transition().delay(i * 50).duration(50).text((data[yearNow].year - diff) + i);
+                        }
+                        
+                    }
+                    else {
+                        diff = -diff;
+                        for (var i = 0; i <= diff; i++) {
+                            centerText.transition().delay(i * 50).duration(50).text((+data[yearNow].year + diff) - i);
+                        }
+                        
+                    }
+                    lastYear = +data[yearNow].year;
+                    
+                }
+                
+            }
+           leg.UpdateColor();
+            
+            
         }
         
-    }
-    
-    function mouseoverColor(){
-        if (isDoneToMake) {
-            PaintGraphColor();
+        function arcTween(a){
+            var i = d3.interpolate(this._current, a);
+            this._current = i(0);
+            return function(t){
+                return arc(i(t));
+            };
         }
         
         
+         leg.UpdateBW();
+        return pieObject;
     }
     
     
-    function PaintGraphBW(){
-        jewRects.transition().duration(500).attr("fill", function(d, i){
-            return helper.segPopulationBW("other")
-        });
-        arabRects.transition().duration(500).attr("fill", function(d, i){
-            return helper.segPopulationBW("arab")
-        });
-        ortodoxRects.transition().duration(500).attr("fill", function(d, i){
-            return helper.segPopulationBW("jew")
-        });
-        sideText.UpdateBW();
     
-    }
     
-    function PaintGraphColor(){
-        jewRects.transition().duration(500).attr("fill", function(d, i){
-            return helper.segPopulationColor("other")
-        });
-        arabRects.transition().duration(500).attr("fill", function(d, i){
-            return helper.segPopulationColor("arab")
-        });
-        ortodoxRects.transition().duration(500).attr("fill", function(d, i){
-            return helper.segPopulationColor("jew")
-        });
-        sideText.UpdateColor();
-    
-    }
-    
-    function legend(yearsData){
+    function legend(yearData){
         var leg = {};
-        var legData = helper.MakePopulationLegData(yearsData, 0);
-		//var rectHeight = helper.getLegRectHeight(mapHeight);
-		var rectWidth = helper.getLegRectWidth(mapWidth);
+        var rectWidth = helper.getLegRectWidth(mapWidth);
 	    var fontSize = helper.getLegFontSize(mapWidth);
 		var translateWidth =  helper.getLegTableTranslateWidth(mapWidth);
-		
+        var legData = helper.makeExpencesInnerData(0, yearData);
+        
         // create table for legend.
-        var legend = group.append("table").attr("width", mapWidth).attr("height",mapHeight)
-		.style("transform","translate(" + 0 + ",30%)").attr('class', 'legend');
+        var legend = tableGroup.append("table")
+        .attr("width", mapWidth).attr("height", mapHeight ).style("transform","translate(" + 0 + ",30%)").attr('class', 'legend');
+		
+	//	var tableDiv =  legend.append("")
         
         // create one row per segment.
         var tr = legend.append("tbody").selectAll("tr").data(legData).enter().append("tr");
         
         // create the first column for each segment.
-        var sqares = tr.append("td")
-		.append("svg").attr("width", rectWidth).attr("height", rectWidth).append("rect").attr("width", rectWidth).attr("height", rectWidth).attr("fill", function(d){
-            return helper.segPopulationColor(d.name);
+        var firstBox = tr.append("td");
+        
+        var sqares = firstBox.append("svg").attr("width", rectWidth).attr("height", rectWidth).append("rect").attr("width", rectWidth).attr("height", rectWidth).attr("fill", function(d){
+            return helper.segExpencesColor(d.name);
         });
         
         // create the second column for each segment.
-        tr.append("td")
-		.style("font-size",fontSize)
-		.text(function(d){
+        tr.append("td").style("font-size",fontSize).text(function(d){
             return d.publicName;
         });
-            
+        
         // create the third column for each segment.
-        var PopulationNumbers = tr.append("td").style("font-size",fontSize).attr("class", 'legendFreq').text(function(d){
-            return helper.getInMilions(d.populatoin) + " M";
-        })
-        ;
-        // create the fourth column for each segment.
-        var prozents = tr.append("td").style("font-size",fontSize).attr("class", 'legendPerc').text(function(d){
-            return getLegend(d, legData);
+        var prozents = tr.append("td").style("font-size",fontSize).attr("class", 'legendFreq').text(function(d){
+            return d.populatoin + "%";
         });
         
-        function getLegend(d, yearD){ // Utility function to compute percentage.
-            var prozent = 100 * (d.populatoin / (+yearD[0].populatoin + +yearD[1].populatoin + +yearD[2].populatoin));
-            return (Math.round(prozent * 10) / 10) + "%";
-        }
-		/// Interaction Functions
-		leg.update = function(year){
-		   	var yearData = helper.MakePopulationLegData(yearsData, year);	
-            PopulationNumbers.data(yearData).text(function(d){
-                return helper.getInMilions(d.populatoin) + " M";
+        leg.update = function(year){
+            prozents.data(helper.makeExpencesInnerData(year, yearData)).text(function(d){
+                return d.populatoin + "%";
             });
-			prozents
-			.data(yearData).text(function(d){
-			var prozent = 100 * (d.populatoin / (+yearData[0].populatoin + +yearData[1].populatoin + +yearData[2].populatoin));
-            return (Math.round(prozent * 10) / 10) + "%";
-        });
         }
-		
-		leg.UpdateBW = function(){
-            sqares.transition().duration(1000).attr("fill", function(d, i){
-				//  console.log(d.color);
-                return helper.segPopulationBW(d.name);
+        leg.UpdateBW = function(){
+            sqares.transition().duration(500).attr("fill", function(d, i){
+                return helper.segExpencesBWColor(d.name)
             });
         }
         
         leg.UpdateColor = function(){
-            sqares.transition().duration(1000).attr("fill", function(d, i){
-                return helper.segPopulationColor(d.name);
+            sqares.transition().duration(500).attr("fill", function(d, i){
+                return helper.segExpencesColor(d.name)
             });
         }
-        
         
         return leg;
     }
     
     
-
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }
-
-
-
-
