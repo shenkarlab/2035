@@ -31,7 +31,8 @@ function SunChart(id, data){
     var pieTranlateWidth = ((minSqareVal / 5) * 2) + padding;
     
 	
-    var paddingLeft = 0.15 * pieWidth;
+
+	var paddingRight = 0.15 * pieWidth;
     var paddingTop = 0.2 * pieHeight;
     var pointShift = 15;
     var middleY = pieHeight / 2;
@@ -45,7 +46,11 @@ function SunChart(id, data){
         return d3.ascending(a.year, b.year);
     });
     
-   
+   var paddingLeft = (minSqareVal / 2);
+   if (pieWidth >= 800) {
+				paddingLeft = (minSqareVal / 2) * 1.5;
+			}
+		
     
     var tableGroup = d3.select(id).append("g").attr("width", svgWidth).attr("height", svgHeight).attr('class', "sunChart" + sunChartId);
 	sunChartId++;
@@ -54,7 +59,7 @@ function SunChart(id, data){
     
     pieSvg = tableGroup.append("svg").attr("width", pieWidth).attr("height", pieHeight);
     
-    var pieGroup = pieSvg.append("g").attr("transform", "translate(" + (minSqareVal / 2) + "," + (minSqareVal / 2) + ")");
+    var pieGroup = pieSvg.append("g").attr("transform", "translate(" + paddingLeft + "," + (minSqareVal / 2) + ")");
     
     var otherData = [{
         "name": "other",
@@ -63,7 +68,7 @@ function SunChart(id, data){
         "name": "other",
         "other": +yearData.jew
     }];
-    var arcOther = d3.svg.arc().innerRadius(innerRadius).outerRadius(innerRadius * 2);
+    var arcOther = d3.svg.arc().innerRadius(innerRadius * 3).outerRadius(innerRadius * 4);
     var pieOther = d3.layout.pie().value(function(d,i){
        // return d.other;
 	          if(i == 0){
@@ -106,7 +111,7 @@ function SunChart(id, data){
         "name": "jew",
         "jew": +yearData.ortodox
     }];
-    var arcJew = d3.svg.arc().innerRadius(innerRadius * 2).outerRadius(innerRadius * 3);
+    var arcJew = d3.svg.arc().innerRadius(innerRadius * 1).outerRadius(innerRadius * 2);
     var pieJew = d3.layout.pie().value(function(d,i){
 		 if(i == 0){
 					return 100;
@@ -144,7 +149,7 @@ function SunChart(id, data){
         "name": "arab",
         "arab": +yearData.arab
     }];
-    var arcarab = d3.svg.arc().innerRadius(innerRadius * 3).outerRadius(innerRadius * 4);
+    var arcarab = d3.svg.arc().innerRadius(innerRadius * 2).outerRadius(innerRadius * 3);
     var piearab = d3.layout.pie().value(function(d,i){
 		 if(i == 0){
 					return 100;
@@ -178,6 +183,42 @@ function SunChart(id, data){
 	
     div.on("mouseout",mouseoutColor);
 	div.on("mouseover", mouseoverColor);
+	 var yearSelectorSvg = pieSvg.append("g");
+	 var headText = yearSelectorSvg.append("text").text(function(d){
+            return "אחוזי תעסוקה לפי מגזר";
+        })
+		.attr("y",function(){
+			return (0.05 * pieHeight);	
+		})
+		.attr("font-size", function(){
+			if(pieWidth >= 800){
+				return "50px";
+			}else if(pieWidth >= 600){
+				return "45px";
+			}
+			else if(pieWidth >= 400){
+				return "35px";
+			}else{
+				return "28px";
+			}
+			
+		}).attr("x", function(){
+			if (pieWidth >= 800) {
+				return (0.72 * pieWidth);
+			}else if(pieWidth >= 600){
+				return (0.76 * pieWidth);
+			}
+			else if(pieWidth >= 400){
+				return (0.82 * pieWidth);
+			}
+			else{
+				return (0.79 * pieWidth);
+				
+			}
+			
+		   
+		});
+	
 	
 	function endPainiting(){
         console.log("Done Painting: ");
@@ -278,7 +319,7 @@ function SunChart(id, data){
 		
 
         var legend = tableGroup 
-	   .append("table").attr("width", mapWidth).attr("height", mapHeight).style("transform","translate(" + translateWidth + ",20%)").attr('class', 'legend');
+	   .append("table").attr("width", mapWidth).attr("height", mapHeight).style("transform","translate(" + translateWidth + ",30%)").attr('class', 'legend');
 	   
         
         // create one row per segment.
