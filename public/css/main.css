@@ -511,7 +511,12 @@ body.switchTimeline .intro-screen.trans{
 	.footer{
 		
 		margin-left:0 !important;
-		
+		right:0;
+		height:auto;
+	}
+	.footer ul{
+	
+		left:0;	
 	}
 	
 	*{
