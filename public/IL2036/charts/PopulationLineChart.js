@@ -111,10 +111,7 @@ function LineDonatChart(id, data){
         }).attr("fill", function(d, i){
             return helper.segExpencesBWColor(innerData[i].name);
         });
-		if (pieWidth >= 900) {
-			pieSvg.attr("height", 900);
-		}
-		else if(pieWidth >= 800){
+       if(pieWidth >= 800){
 		var places = [[-0.45 * minSqareVal, 0.31 * minSqareVal, -0.45 * minSqareVal, 0.3135 * minSqareVal, -0.35 * minSqareVal, 0.3125 * minSqareVal]
 		, [0.45 * minSqareVal, 0.31 * minSqareVal, 0.40 * minSqareVal, 0.3135 * minSqareVal, 0.287 * minSqareVal, 0.3125 * minSqareVal]
 		, [-0.45 * minSqareVal, -0.415 * minSqareVal, -0.45 * minSqareVal, -0.4125 * minSqareVal, -0.3 * minSqareVal, -0.4125 * minSqareVal]
