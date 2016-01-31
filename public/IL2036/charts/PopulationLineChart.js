@@ -4,7 +4,7 @@ function PopulationLineChart(id, data){
 	///Set Dinamic Sizes
     var helper = ChartHelper();
     var div = d3.select(id);
-    var svgHeight  = 593;
+    var svgHeight  = 450;
 //	var svgWidth  = 967;
     // var svgHeight = parseInt(div.style("height"), 10);
     // var svgWidth = parseInt(div.style("width"), 10);
@@ -17,7 +17,7 @@ function PopulationLineChart(id, data){
     
     var paddingLeft = 0.15 * chartWidth;
 	var paddingRight = 0.05 * chartWidth;
-    var botPadding = 0.05 * chartHeight;
+    var botPadding = 0.25 * chartHeight;
 	var paddingTop = 0.1 * chartHeight;
     var isDoneToMake = false;
     
@@ -50,8 +50,19 @@ function PopulationLineChart(id, data){
     var heightScale = d3.scale.linear().domain([MaxPopulationVal, minPopulationVal]).range([paddingTop, chartHeight - botPadding]);
    
     var widthScale = d3.scale.ordinal().domain(d3.range(data.length)).domain(yearTitles).rangeRoundBands([paddingLeft, chartWidth - paddingRight], 0.1);
-    
-    
+    var axisTextSize = "20px"
+    if(chartWidth >= 800){
+				axisTextSize =  "30px";
+			}else if(chartWidth >= 600){
+				axisTextSize = "25px";
+			}else if(chartWidth >= 400){
+				axisTextSize = "20px";
+			}
+			else{
+				axisTextSize = "15px";
+			}
+	
+	
     //Make Groupes and SVGs
 	//div.attr("width", svgWidth).attr("height", svgHeight);
     var group = div.append("g").attr("width", svgWidth).attr("height", svgHeight);
@@ -63,13 +74,13 @@ function PopulationLineChart(id, data){
     //Make Axis Acording to Scales
     var widthAxis = d3.svg.axis().scale(widthScale).orient("bottom").tickSize(0, 1);
 
-    var axisx = svg.append("g").attr("class", "x-axis").attr("transform", "translate(" + 0 + "," + (chartHeight - botPadding) + ")").attr("font-size", "10px").call(widthAxis).style("font-size","30px");
+    var axisx = svg.append("g").attr("class", "x-axis").attr("transform", "translate(" + 0 + "," + (chartHeight - botPadding) + ")").attr("font-size", "10px").call(widthAxis).style("font-size",axisTextSize);
     
     var heightAxis = d3.svg.axis().scale(heightScale).orient("right").ticks(10).tickSize(0, 0).tickFormat(function(d){
         return  " Mil " + (Math.round((d) / 100000) / 10);
     });
     
-    var axisY = svg.append("g").attr("transform", "translate(" + (paddingLeft * 0.7) + "," + 0 + ")").call(heightAxis).style("font-size","35px");
+    var axisY = svg.append("g").attr("transform", "translate(" + (paddingLeft * 0.7) + "," + 0 + ")").call(heightAxis).style("font-size",axisTextSize);
     
   
     
@@ -133,28 +144,34 @@ function PopulationLineChart(id, data){
 	
 	   var yearSelectorSvg = svg.append("g");
 	  var headText = yearSelectorSvg.append("text").text(function(d){
-            return "אוכלוסיה בישראל לפי מגזרים";
+            return "אוכלוסיה בישראל לפי מגזר";
         })
 		.attr("y",function(){
 			return (0.1 * chartHeight);	
 		})
 		.attr("font-size", function(){
 			if(chartWidth >= 800){
-				return "55px";
-			}else if(chartWidth >= 400){
+				return "50px";
+			}else if(chartWidth >= 600){
 				return "45px";
-			}else{
+			}else if(chartWidth >= 400){
+				return "40px";
+			}
+			else{
 				return "28px";
 			}
 			
 		}).attr("x", function(){
 			if (chartWidth >= 800) {
 				return (0.8 * chartWidth);
-			}else if(chartWidth >= 400){
-				return (0.8 * chartWidth);
+			}else if(chartWidth >= 600){
+				return (0.86 * chartWidth);
+			}
+			else if(chartWidth >= 400){
+				return (0.89 * chartWidth);
 			}
 			else{
-				return (0.8 * chartWidth);
+				return (0.89 * chartWidth);
 				
 			}
 			
